@@ -18,7 +18,7 @@ To run the website locally, clone the repository and run the following commands:
 
 1. Clone repository using git clone
    ```bash
-    git clone https://github.com/vaishnow/MoviesDB
+    git clone https://github.com/vaishnow/MoviesDB moviesdb
     ```
 2. Navigate to the project directory
    ```bash
