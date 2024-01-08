@@ -1,0 +1,219 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* global begin */
+html {
+	overscroll-behavior: none;
+	scroll-behavior: smooth;
+	overflow-x: hidden;
+}
+
+.btn {
+	@apply py-2 px-4 rounded border-slate-800
+}
+
+.mdb-page {
+	@apply dark:bg-mdb-dark-100 dark:text-mdb-light-100
+}
+
+a,
+button {
+	transition: linear .2s;
+	/* @apply hover:bg-slate-200 dark:hover:bg-mdb-dark-100 */
+}
+
+h6 {
+	font-size: clamp(1.5rem, (100vw - 300px), 2rem);
+}
+
+.text-shadow {
+	text-shadow: 0 0 1px black;
+}
+
+/* global end */
+
+
+/* Navbar properties begin */
+nav ul li a {
+	display: block;
+	text-align: center;
+	padding: 1rem;
+}
+
+nav {
+	@apply relative shadow shadow-gray-300 dark:shadow-gray-800
+}
+
+
+
+nav ul li {
+	@apply w-auto md:w-32 my-1
+}
+
+/* Navbar properties end */
+
+/* Home Properties begin */
+
+#top .text-h5 {
+	font-size: clamp(2rem, 3rem, 3vw);
+}
+
+#top .text-h4 {
+	font-size: clamp(3.6rem, 6.6vw, 7rem);
+	font-weight: 700;
+	background: -webkit-linear-gradient(#7001de, #ff01e6);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.intro-movie-card {
+	display: block;
+	border-radius: 1rem;
+	aspect-ratio: 10/16;
+	width: 20rem;
+	min-width: 40vw;
+	max-width: 60vw;
+	margin-left: 10vw;
+	position: relative;
+	transition: ease .4s;
+	box-shadow: 0 0 2px gray;
+}
+
+.intro-movie-card:hover {
+	z-index: 10;
+	scale: 1.1;
+}
+
+.imc-container {
+	margin-left: 7vw;
+	max-width: 10vw;
+}
+
+@media (min-width:640px) {
+	.intro-movie-card {
+		min-width: 40vw;
+		max-width: 60vw;
+	}
+
+	.imc-container {
+		margin-left: 0;
+		width: 50%;
+		max-width: 45vw;
+	}
+
+}
+
+@media (min-width:1280px) {
+	.intro-movie-card {
+		min-width: 20vw;
+		width: 30rem;
+		margin-left: auto;
+		max-width: 25vw;
+	}
+
+
+	.imc-container {
+		max-width: 25vw;
+	}
+
+	.intro-movie-card:hover {
+		z-index: 10;
+		transform: translateY(0px);
+		scale: 1.1;
+	}
+
+}
+
+.edl {
+	scroll-behavior: smooth;
+}
+
+.edl::-webkit-scrollbar {
+	display: none;
+}
+
+.discover-card {
+	aspect-ratio: 9.4/16;
+}
+
+.discover-card img {
+	aspect-ratio: 11/16;
+}
+
+/* Home Properties end */
+
+/* MoviesList Properties begin */
+
+.movie-card {
+	aspect-ratio: 16/11;
+}
+
+.movie-card-title {
+	width: 175px;
+}
+
+.movie-card img {
+	aspect-ratio: 11/16;
+	height: 100%;
+}
+
+/* MoviesList Properties end */
+
+/* Movie Properties begin */
+.mbg {
+	position: relative;
+	overflow: auto;
+}
+
+.mbg::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.814);
+}
+
+@media (max-width:640px) {
+	.mbg::before {
+		background: rgba(58, 57, 57, 0.9);
+	}
+}
+
+.mfg {
+	position: relative;
+}
+
+/* Movie Properties end */
+
+/* Footer Properties begin */
+footer {
+	@apply shadow dark:shadow-gray-800 shadow-current
+}
+
+.fluid {
+	aspect-ratio: 1/1;
+	border-radius: 50%;
+	transition: 0s;
+}
+
+.fluid:hover {
+	background-image: url('./assets/fluid.gif');
+	background-size: 130%;
+	background-position: center;
+	background-repeat: no-repeat;
+	border-radius: 50%;
+	aspect-ratio: 1/1;
+	height: 3rem;
+}
+
+/* Footer Properties end */
+
+/* TMP BEGIN */
+* {
+	/* border: .1px solid red; */
+}
+
+/* TMP END */
