@@ -1,9 +1,75 @@
-import React from 'react'
+import React from "react";
+import logo from "../assets/logo.svg";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 
-function Auth() {
+function Auth({ registered }) {
   return (
-	<div className='mdb-page'>Auth</div>
-  )
+    <div className="mdb-page pb-28">
+      <h5 className="flex flex-wrap max-w-full justify-center gap-3 text-center py-10 text-5xl font-medium">
+        Welcome {registered && "back"} to{" "}
+        <img src={logo} alt="MoviesDB" className="w-44" />
+      </h5>
+
+      <div className="rounded w-11/12 sm:w-96 p-4 bg-gray-100 dark:bg-mdb-sec-300 shadow-lg shadow-gray-400 dark:shadow-gray-900 mx-auto">
+        <form>
+          <div className="mb-5">
+            <label htmlFor="email" className="block my-2 text-sm font-semibold">
+              Email
+            </label>
+            <input
+              type="email"
+              id="email"
+              placeholder="johndoe@email.com"
+              autoComplete="email"
+              className="rounded-md w-full bg-white dark:bg-mdb-sec-200 shadow-inner focus:shadow sm:max-w-md bg-transparent p-2 text-gray-900 dark:text-white focus:ring-0 sm:text-sm sm:leading-6"
+            />
+          </div>
+          {!registered && (
+            <div className="mb-5">
+              <label
+                htmlFor="username"
+                className="block my-2 text-sm font-semibold"
+              >
+                Username
+              </label>
+              <input
+                type="username"
+                id="username"
+                placeholder="johndoe"
+                autoComplete="username"
+                className="rounded-md w-full bg-white dark:bg-mdb-sec-200 shadow-inner focus:shadow sm:max-w-md bg-transparent p-2 text-gray-900 dark:text-white focus:ring-0 sm:text-sm sm:leading-6"
+              />
+            </div>
+          )}
+          <div className="mb-5">
+            <label
+              htmlFor="password"
+              className="block my-2 text-sm font-semibold"
+            >
+              Password
+            </label>
+            <input
+              type="password"
+              id="password"
+              placeholder="Enter your password"
+              autoComplete="password"
+              className="rounded-md w-full bg-white dark:bg-mdb-sec-200 shadow-inner focus:shadow sm:max-w-md bg-transparent p-2 text-gray-900 dark:text-white focus:ring-0 sm:text-sm sm:leading-6"
+            />
+          </div>
+          <button className="btn w-full mt-4 bg-mdb-red text-white">
+            {registered ? "Login" : "Signup"}
+          </button>
+        </form>
+      </div>
+      <div className="mt-5 rounded w-11/12 sm:w-96 p-4 border border-black dark:border-white  shadow-lg shadow-gray-400 dark:shadow-gray-900 mx-auto text-center">
+        {registered ? "New to MoviesDB?" : "Already a member?"}
+        <a href={registered?"/user/register":"/user/login"} className="font-extrabold px-2 py-3">
+          Sign {registered?"up":"in"} <FontAwesomeIcon icon={faArrowRight} />
+        </a>
+      </div>
+    </div>
+  );
 }
 
-export default Auth
+export default Auth;

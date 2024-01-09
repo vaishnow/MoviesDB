@@ -92,9 +92,19 @@ function Footer() {
 
   /* Function for repeated Footer Social links */
   const FooterSocialIcons = ({ socialsArray }) => {
-    return socialsArray.map((item,i) => (
-      <a href={item.path} key={i} target="_blank" className="py-2 h-12 fluid " rel="noopener noreferrer">
-        <FontAwesomeIcon className="block m-auto" icon={item.faIcon} aria-label={item.desc} />
+    return socialsArray.map((item, i) => (
+      <a
+        href={item.path}
+        key={i}
+        target="_blank"
+        className="py-2 h-12 fluid "
+        rel="noopener noreferrer"
+      >
+        <FontAwesomeIcon
+          className="block m-auto"
+          icon={item.faIcon}
+          aria-label={item.desc}
+        />
       </a>
     ));
   };
@@ -123,9 +133,9 @@ function Footer() {
         <div className="flex">
           <input
             type="text"
-            autoComplete="username"
+            autoComplete="email"
             id="news-sub"
-            className="rounded-s-md w-full grow shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-1 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md bg-transparent p-1.5 text-gray-900 dark:text-white focus:ring-0 sm:text-sm sm:leading-6"
+            className="rounded-s-md w-full grow shadow-sm sm:max-w-md bg-transparent p-1.5 text-gray-900 dark:text-white focus:ring-0 sm:text-sm sm:leading-6"
             placeholder="user123@email.com"
           />
           <button className="py-2 px-2 rounded-e-md bg-mdb-red text-white">
@@ -133,7 +143,7 @@ function Footer() {
           </button>
         </div>
         <div className="flex justify-between my-4 text-3xl">
-          <FooterSocialIcons socialsArray={footerSocialMedia}/>
+          <FooterSocialIcons socialsArray={footerSocialMedia} />
         </div>
       </div>
     </footer>

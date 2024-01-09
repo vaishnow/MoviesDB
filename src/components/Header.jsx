@@ -73,7 +73,7 @@ function Header() {
           <a href="/tvshows">TVShows</a>
         </li>
       </ul>
-      <a className={(navExpanded ? "hidden " : "") + "btn my-auto bg-"} href="">
+      <a className={(navExpanded ? "hidden " : "") + "btn my-auto bg-"} href="/user/register">
         Sign up
       </a>
     </nav>

@@ -16,9 +16,12 @@ function App() {
       errorElement: <NotFound />,
     },
     {
+      path: "/user/login",
+      element: <Auth registered />,
+    },
+    {
       path: "/user/register",
       element: <Auth />,
-      errorElement: <NotFound />,
     },
     {
       path: "/movies",
