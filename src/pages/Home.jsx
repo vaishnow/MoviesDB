@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import DiscoverList from "../components/DiscoverList";
 
 function Home() {
@@ -26,38 +27,38 @@ function Home() {
             Find and rate your favourite movies and shows or just find new
             movies to watch, share your preferences with the world
           </p>
-          <a href="" className="btn bg-mdb-red text-white w-32 font-bold my-5">
+          <Link to="/" className="btn bg-mdb-red text-white w-32 font-bold my-5">
             Explore →
-          </a>
+          </Link>
         </div>
         <div className=" intro-div min-h-96 py-10  max-h-screen">
           <div className="imc-container grid grid-cols-3 mx-10 lg:mx-10">
-            <a
+            <Link
               className="intro-movie-card  -rotate-12 hover:-rotate-12"
-              href=""
+              to="/movies/24428"
             >
               <img
                 className="w-full h-full  object-cover rounded-lg"
                 src="https://image.tmdb.org/t/p/w400/RYMX2wcKCBAr24UyPD7xwmjaTn.jpg"
               />
-            </a>
+            </Link>
 
-            <a className="intro-movie-card" href="">
+            <Link className="intro-movie-card" to="/movies/27205">
               <img
                 className="w-full h-full  object-cover rounded-lg"
                 src="https://image.tmdb.org/t/p/w400/oYuLEt3zVCKq57qu2F8dT7NIa6f.jpg"
               />
-            </a>
+            </Link>
 
-            <a
+            <Link
               className="intro-movie-card rotate-12 hover:rotate-12 translate-x-3 translate-y-0 md:translate-y-7"
-              href=""
+              to="/movies/155"
             >
               <img
                 className="w-full h-full  object-cover rounded-lg"
                 src="https://image.tmdb.org/t/p/w400/qJ2tW6WMUDux911r6m7haRef0WH.jpg"
               />
-            </a>
+            </Link>
           </div>
         </div>
       </section>

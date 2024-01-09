@@ -2,6 +2,7 @@ import React from "react";
 import logo from "../assets/logo.svg";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
+import { Link } from "react-router-dom";
 
 function Auth({ registered }) {
   return (
@@ -64,9 +65,9 @@ function Auth({ registered }) {
       </div>
       <div className="mt-5 rounded w-11/12 sm:w-96 p-4 border border-black dark:border-white  shadow-lg shadow-gray-400 dark:shadow-gray-900 mx-auto text-center">
         {registered ? "New to MoviesDB?" : "Already a member?"}
-        <a href={registered?"/user/register":"/user/login"} className="font-extrabold px-2 py-3">
+        <Link to={registered?"/user/register":"/user/login"} className="font-extrabold px-2 py-3">
           Sign {registered?"up":"in"} <FontAwesomeIcon icon={faArrowRight} />
-        </a>
+        </Link>
       </div>
     </div>
   );

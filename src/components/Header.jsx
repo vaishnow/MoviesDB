@@ -52,7 +52,7 @@ function Header() {
         </button>
       </div>
       <div className={(navExpanded ? "hidden " : "") + "mx-3 my-auto"}>
-        <a href="/"><img className="h-10" src={logo} /></a>
+        <Link to="/"><img className="h-10" src={logo} /></Link>
       </div>
       <ul
         className={
@@ -61,21 +61,21 @@ function Header() {
         }
       >
         <li>
-          <a href="/">Home</a>
+          <Link to="/">Home</Link>
         </li>
         <li>
-          <a href="/movies">Explore</a>
+          <Link to="/movies">Explore</Link>
         </li>
         <li>
-          <a href="/movies">Movies</a>
+          <Link to="/movies" reloadDocument>Movies</Link>
         </li>
         <li>
-          <a href="/tvshows">TVShows</a>
+          <Link to="/tvshows" reloadDocument>TVShows</Link>
         </li>
       </ul>
-      <a className={(navExpanded ? "hidden " : "") + "btn my-auto bg-"} href="/user/register">
+      <Link className={(navExpanded ? "hidden " : "") + "btn my-auto bg-"} to="/user/register">
         Sign up
-      </a>
+      </Link>
     </nav>
   );
 }

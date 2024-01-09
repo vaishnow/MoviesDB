@@ -6,15 +6,16 @@ import {
   faLinkedin,
   faXTwitter,
 } from "@fortawesome/free-brands-svg-icons";
+import { Link } from "react-router-dom";
 
 function Footer() {
   const footerAccLinks = [
     {
-      path: "",
+      path: "/user/register",
       desc: "Sign up",
     },
     {
-      path: "",
+      path: "/user/login",
       desc: "Sign in",
     },
   ];
@@ -40,11 +41,11 @@ function Footer() {
 
   const footerContentLinks = [
     {
-      path: "",
+      path: "/movies",
       desc: "Movies",
     },
     {
-      path: "",
+      path: "tvshows",
       desc: "TV Shows",
     },
     {
@@ -58,22 +59,22 @@ function Footer() {
   ];
   const footerSocialMedia = [
     {
-      path: "",
+      path: "https://instagram.com",
       faIcon: faInstagram,
       label: "Instagram",
     },
     {
-      path: "",
+      path: "https://instagram.com",
       faIcon: faXTwitter,
       label: "Twitter",
     },
     {
-      path: "",
+      path: "https://instagram.com",
       faIcon: faLinkedin,
       label: "LinkedIn",
     },
     {
-      path: "",
+      path: "https://instagram.com",
       faIcon: faDiscord,
       label: "Discord",
     },
@@ -83,9 +84,9 @@ function Footer() {
   const FooterLists = ({ linksArray }) => {
     return linksArray.map((item, i) => (
       <li key={i}>
-        <a href={item.path} className="block p-2" rel="noopener noreferrer">
+        <Link to={item.path} className="block p-2" rel="noopener noreferrer">
           {item.desc}
-        </a>
+        </Link>
       </li>
     ));
   };
@@ -93,8 +94,8 @@ function Footer() {
   /* Function for repeated Footer Social links */
   const FooterSocialIcons = ({ socialsArray }) => {
     return socialsArray.map((item, i) => (
-      <a
-        href={item.path}
+      <Link
+        to={item.path}
         key={i}
         target="_blank"
         className="py-2 h-12 fluid "
@@ -105,7 +106,7 @@ function Footer() {
           icon={item.faIcon}
           aria-label={item.desc}
         />
-      </a>
+      </Link>
     ));
   };
 
