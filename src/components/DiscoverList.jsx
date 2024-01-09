@@ -31,7 +31,7 @@ function DiscoverList({ content }) {
       </div>
       <div className="mx-auto text-center py-5 w-52 font-bold">
         <Link
-          to={"/movies"}
+          to={content.viewmore}
           className="w-full px-3 py-1 rounded text-2xl bg-gray-300 dark:bg-gray-800"
         >
           VIEW ALL
