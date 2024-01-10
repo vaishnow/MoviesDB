@@ -31,11 +31,13 @@ h6 {
 	text-shadow: 0 0 1px black;
 }
 
-input,textarea{
+input,
+textarea {
 	outline: .1px solid rgb(162, 158, 158);
 }
 
-input:focus,textarea:focus{
+input:focus,
+textarea:focus {
 	outline: 2px solid gray;
 }
 

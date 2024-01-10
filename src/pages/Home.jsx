@@ -27,7 +27,10 @@ function Home() {
             Find and rate your favourite movies and shows or just find new
             movies to watch, share your preferences with the world
           </p>
-          <Link to="/" className="btn bg-mdb-red text-white w-32 font-bold my-5">
+          <Link
+            to="/"
+            className="btn bg-mdb-red text-white w-32 font-bold my-5"
+          >
             Explore →
           </Link>
         </div>

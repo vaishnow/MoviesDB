@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 // import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 function DiscoverCard({ movie }) {
-  const { id,poster_path, vote_average } = movie;
+  const { id, poster_path, vote_average } = movie;
   const title = movie.first_air_date ? movie.name : movie.title;
   const ratingColor =
     vote_average < 6
@@ -18,7 +18,7 @@ function DiscoverCard({ movie }) {
       <Link to={`/movies/${id}`}>
         <img
           className="w-full rounded-t"
-          src={`https://image.tmdb.org/t/p/w500//${ poster_path}`}
+          src={`https://image.tmdb.org/t/p/w500//${poster_path}`}
         />
       </Link>
       <div className="w-full px-2 py-0.5 flex items-center h-10 my-auto justify-between">
@@ -31,7 +31,9 @@ function DiscoverCard({ movie }) {
             ratingColor
           }
         >
-          <span className="m-auto text-shadow dark:text-shadow-white">{vote_average}</span>
+          <span className="m-auto text-shadow dark:text-shadow-white">
+            {vote_average}
+          </span>
         </div>
       </div>
     </div>

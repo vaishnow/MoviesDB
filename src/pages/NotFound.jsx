@@ -12,7 +12,9 @@ function NotFound() {
         >
           Oops!
         </h1>
-        <p className="text-2xl mt-3">Sorry, an unexpected error has occurred.</p>
+        <p className="text-2xl mt-3">
+          Sorry, an unexpected error has occurred.
+        </p>
         <p className="mt-3">{error.statusText || error.message}</p>
       </div>
     </div>

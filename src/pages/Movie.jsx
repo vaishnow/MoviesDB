@@ -43,9 +43,12 @@ function Movie({ content }) {
                 movieDetails.release_date || movieDetails.first_air_date
               )?.slice(0, 4)}
             </h6>
-            {
-              movieDetails.runtime && <div><span className="text-gray-400">Runtime : </span>{movieDetails.runtime} mins</div>
-            }
+            {movieDetails.runtime && (
+              <div>
+                <span className="text-gray-400">Runtime : </span>
+                {movieDetails.runtime} mins
+              </div>
+            )}
             <div className="flex flex-wrap py-2 md:py-4 justify-center sm:justify-normal">
               {movieDetails.genres?.map((item) => (
                 <div
@@ -56,7 +59,7 @@ function Movie({ content }) {
                 </div>
               ))}
             </div>
-            <p >{movieDetails.overview}</p>
+            <p>{movieDetails.overview}</p>
           </div>
         </div>
       </div>

@@ -50,7 +50,14 @@ function MoviesList({ content }) {
           let gList = item.genre_ids?.map((gid) =>
             genreList?.find((genre) => gid === genre.id)
           );
-          return <MovieCard key={item.id} content={content} movie={item} genres={gList} />;
+          return (
+            <MovieCard
+              key={item.id}
+              content={content}
+              movie={item}
+              genres={gList}
+            />
+          );
         })}
       </div>
       {/* <div className="flex p-5">

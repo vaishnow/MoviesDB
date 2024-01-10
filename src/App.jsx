@@ -47,8 +47,7 @@ function App() {
             },
             {
               path: "movies",
-                  element: <MoviesList content="movie" />,
-              
+              element: <MoviesList content="movie" />,
             },
             {
               path: "movies/:id",

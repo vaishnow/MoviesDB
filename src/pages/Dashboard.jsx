@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 function Dashboard() {
-  return (
-	<section className='mdb-page'>Dashboard</section>
-  )
+  return <section className="mdb-page">Dashboard</section>;
 }
 
-export default Dashboard
+export default Dashboard;

@@ -14,7 +14,10 @@ function MovieCard({ content, movie, genres }) {
 
   return (
     <div className="movie-card bg-gray-300 dark:bg-mdb-sec-300 w-full max-w-full max-h-48 object-cover snap-proximity rounded m-1">
-      <Link className="flex h-full pe-2" to={`/${content=='tv'?'tvshows':'movies'}/${id}`}>
+      <Link
+        className="flex h-full pe-2"
+        to={`/${content == "tv" ? "tvshows" : "movies"}/${id}`}
+      >
         <img
           className="rounded-l"
           src={`https://image.tmdb.org/t/p/w500//${poster_path}`}
@@ -39,7 +42,7 @@ function MovieCard({ content, movie, genres }) {
             {year}
           </div>
           <div className="flex flex-wrap gap-y-2 gap-x-2 mt-2">
-            {genres?.map((item,i) =>(
+            {genres?.map((item, i) => (
               <div
                 key={i}
                 className="rounded-lg text-sm bg-purple-800 text-white px-1 pb-0.5 "
