@@ -69,14 +69,10 @@ function Header() {
           <Link to="/movies">Explore</Link>
         </li>
         <li>
-          <Link to="/movies" reloadDocument>
-            Movies
-          </Link>
+          <Link to="/movies">Movies</Link>
         </li>
         <li>
-          <Link to="/tvshows" reloadDocument>
-            TVShows
-          </Link>
+          <Link to="/tvshows">TVShows</Link>
         </li>
       </ul>
       <Link

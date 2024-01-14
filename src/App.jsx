@@ -1,18 +1,21 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import { Outlet, RouterProvider, createBrowserRouter } from "react-router-dom";
-import Home from "./pages/Home";
-import MoviesList from "./pages/MoviesList";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import NotFound from "./pages/NotFound";
-import Movie from "./pages/Movie";
-import Auth from "./pages/Auth";
+import LazyLoadPage from "./pages/LazyLoadPage";
+const Home = lazy(() => import("./pages/Home"));
+const MoviesList=lazy(()=>import("./pages/MoviesList"));
+const Movie=lazy(()=>import("./pages/Movie"));
+const Auth=lazy(()=>import("./pages/Auth"));
+const NotFound=lazy(()=>import("./pages/NotFound"));
 
 function Layout() {
   return (
     <>
       <Header />
-      <Outlet />
+      <Suspense fallback={<LazyLoadPage/>}>
+        <Outlet />
+      </Suspense>
       <Footer />
     </>
   );
