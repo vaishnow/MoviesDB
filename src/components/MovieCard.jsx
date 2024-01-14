@@ -19,8 +19,9 @@ function MovieCard({ content, movie, genres }) {
         to={`/${content == "tv" ? "tvshows" : "movies"}/${id}`}
       >
         <img
+          loading="lazy"
           className="rounded-l"
-          src={`https://image.tmdb.org/t/p/w500//${poster_path}`}
+          src={`https://image.tmdb.org/t/p/w200//${poster_path}`}
         />
         <div className="relative w-0 right-9 top-1 ">
           <div
