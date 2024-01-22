@@ -3,17 +3,17 @@ import { discoverContent } from "../api/tmdb";
 import MovieCard from "../components/MovieCard";
 
 function MoviesList({ content }) {
-  const apiPrefix =
-    content == "movie"
-      ? `/discover/movie?include_adult=false&include_video=false&language=en-US&`
-      : `/discover/tv?include_null_first_air_dates=false&include_adult=false&language=en-US&`;
-
-  const [sort, setSort] = useState({ by: "popularity", order: "desc" });
-  const [api, setApi] = useState(
-    `${apiPrefix}page=1&sort_by=${sort.by}.${sort.order}`
-  );
   const [contentList, setContentList] = useState([]);
   const [genreList, setGenreList] = useState([]);
+  const [sort, setSort] = useState({ by: "popularity", order: "desc" });  
+
+  const apiPrefix = {
+    movie: `/discover/movie?include_adult=false&include_video=false&language=en-US&`,
+    tvshow: `/discover/tv?include_null_first_air_dates=false&include_adult=false&language=en-US&`,
+  };
+  const api = `${
+    content == "movie" ? apiPrefix.movie : apiPrefix.tvshow
+  }page=1&sort_by=${sort.by}.${sort.order}`;
 
   const getContent = async (sort) => {
     let result = await discoverContent(api);
@@ -34,12 +34,15 @@ function MoviesList({ content }) {
   };
 
   useEffect(() => {
-    getContent();
-  }, [sort]);
+    getGenres();
+    getContent(sort);
+  }, [content]);
 
   useEffect(() => {
     getGenres();
+    getContent(sort);
   }, []);
+
   return (
     <section className="mdb-page">
       <div className="text-5xl text-center p-5">
