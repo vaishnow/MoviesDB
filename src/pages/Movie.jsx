@@ -30,7 +30,7 @@ function Movie({ content }) {
       >
         <div className="mfg sm:flex p-3 sm:p-5 w-full max-w-full h-full rounded-lg shadow text-white">
           <img
-            src={`https://image.tmdb.org/t/p/w400//${movieDetails.poster_path}`}
+            src={`https://image.tmdb.org/t/p/w400/${movieDetails.poster_path}`}
             alt=""
             className="rounded w-full sm:w-80"
           />
