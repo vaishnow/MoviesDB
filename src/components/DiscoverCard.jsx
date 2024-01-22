@@ -1,11 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 function DiscoverCard({ movie }) {
   const { id, poster_path, vote_average } = movie;
   const title = movie.first_air_date ? movie.name : movie.title;
+  const type = movie.first_air_date?"tvshows":"movies"
   const ratingColor =
     vote_average < 6
       ? "text-red-600"
@@ -15,7 +14,7 @@ function DiscoverCard({ movie }) {
 
   return (
     <div className="discover-card bg-gray-300 dark:bg-mdb-sec-300 h-80 md:h-96 object-cover snap-proximity rounded me-4">
-      <Link to={`/movies/${id}`}>
+      <Link to={`/${type}/${id}`}>
         <img
           loading="lazy"
           className="w-full rounded-t"
