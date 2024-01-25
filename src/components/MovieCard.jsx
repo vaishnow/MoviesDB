@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function MovieCard({ content, movie, genres }) {
   const { id, poster_path, vote_average } = movie;
   const title = movie.name || movie.title;
-  const year = (movie.release_date || movie.first_air_date).slice(0, 4);
+  const year = (movie.release_date || movie.first_air_date)?.slice(0, 4);
   const ratingColor =
     vote_average < 6
       ? "text-red-600"
