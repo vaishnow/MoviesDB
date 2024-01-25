@@ -10,7 +10,6 @@ function Movie({ content }) {
     let result = await discoverContent(`/${content}/${id}?language=en-US`);
     if (result.status === 200) {
       setMovieDetails(result.data);
-      console.log(result.data);
     } else {
       console.log(result.response.data);
     }

@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { discoverContent } from "../api/tmdb";
 import MovieCard from "../components/MovieCard";
+import Pagination from "../components/Pagination";
 
 function MoviesList({ content }) {
+  const [filterParams, setFilterParams] = useSearchParams({ page: 1 });
   const [contentList, setContentList] = useState([]);
   const [genreList, setGenreList] = useState([]);
-  const [sort, setSort] = useState({ by: "popularity", order: "desc" });  
+  const [totalPages, setTotalPages] = useState(500);
+  const [sort, setSort] = useState({ by: "popularity", order: "desc" });
 
   const apiPrefix = {
     movie: `/discover/movie?include_adult=false&include_video=false&language=en-US&`,
@@ -13,12 +17,13 @@ function MoviesList({ content }) {
   };
   const api = `${
     content == "movie" ? apiPrefix.movie : apiPrefix.tvshow
-  }page=1&sort_by=${sort.by}.${sort.order}`;
+  }page=${filterParams.get("page")}&sort_by=${sort.by}.${sort.order}`;
 
   const getContent = async (sort) => {
     let result = await discoverContent(api);
     if (result.status === 200) {
       setContentList(result.data.results);
+      setTotalPages(result.data.total_pages);
     } else {
       alert(result.response.data);
     }
@@ -33,10 +38,18 @@ function MoviesList({ content }) {
     }
   };
 
+  const updatePage = (page) => {
+    setFilterParams({ page: page });
+  };
+
   useEffect(() => {
     getGenres();
     getContent(sort);
   }, [content]);
+
+  useEffect(() => {
+    getContent(sort);
+  }, [filterParams]);
 
   useEffect(() => {
     getGenres();
@@ -63,18 +76,11 @@ function MoviesList({ content }) {
           );
         })}
       </div>
-      {/* <div className="flex p-5">
-        <div className="flex flex-wrap justify-around mx-auto">
-          <button className="btn m-1 bg-mdb-sec-300">&lt;&lt;</button>
-          <button className="btn m-1 bg-mdb-sec-300">&lt;</button>
-          <button className="btn m-1 bg-mdb-sec-300">1</button>
-          <button className="btn m-1 bg-mdb-sec-300">1</button>
-          <button className="btn m-1 bg-mdb-sec-300">1</button>
-          <button className="btn m-1 bg-mdb-sec-300">1</button>
-          <button className="btn m-1 bg-mdb-sec-300">&gt;</button>
-          <button className="btn m-1 bg-mdb-sec-300">&gt;&gt;</button> 
-        </div>
-      </div> */}
+      <Pagination
+        currPage={parseInt(filterParams.get("page")) || 1}
+        totalPages={totalPages}
+        pageUpdate={updatePage}
+      />
     </section>
   );
 }
