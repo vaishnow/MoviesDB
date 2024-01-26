@@ -9,7 +9,7 @@ const Pagination = ({ currPage, pageUpdate, totalPages }) => {
           {/* Prev Page Button */}
           {currPage > 1 && (
             <button
-              className="btn m-1 bg-mdb-sec-300"
+              className="btn m-1 bg-mdb-light-100 dark:bg-mdb-sec-300"
               onClick={() => pageUpdate(currPage - 1)}
             >
               &lt;
@@ -18,7 +18,7 @@ const Pagination = ({ currPage, pageUpdate, totalPages }) => {
           {/* First Page Button */}
           {currPage > 2 && (
             <button
-              className="btn m-1 bg-mdb-sec-300"
+              className="btn m-1 bg-mdb-light-100 dark:bg-mdb-sec-300"
               onClick={() => pageUpdate(1)}
             >
               1
@@ -29,7 +29,7 @@ const Pagination = ({ currPage, pageUpdate, totalPages }) => {
           {/* Current Page - 1 */}
           {currPage > 1 && (
             <button
-              className="btn m-1 bg-mdb-sec-300"
+              className="btn m-1 bg-mdb-light-100 dark:bg-mdb-sec-300"
               onClick={() => pageUpdate(currPage - 1)}
             >
               {currPage - 1}
@@ -40,7 +40,7 @@ const Pagination = ({ currPage, pageUpdate, totalPages }) => {
           {/* Current Page + 1 */}
           {currPage < lastPage - 1 && (
             <button
-              className="btn m-1 bg-mdb-sec-300"
+              className="btn m-1 bg-mdb-light-100 dark:bg-mdb-sec-300"
               onClick={() => pageUpdate(currPage + 1)}
             >
               {currPage + 1}
@@ -51,7 +51,7 @@ const Pagination = ({ currPage, pageUpdate, totalPages }) => {
           {/* Last Page Button */}
           {currPage < lastPage && (
             <button
-              className="btn m-1 bg-mdb-sec-300"
+              className="btn m-1 bg-mdb-light-100 dark:bg-mdb-sec-300"
               onClick={() => pageUpdate(lastPage)}
             >
               {lastPage}
@@ -60,7 +60,7 @@ const Pagination = ({ currPage, pageUpdate, totalPages }) => {
           {/* Next Page Button */}
           {currPage < 500 && (
             <button
-              className="btn m-1 bg-mdb-sec-300"
+              className="btn m-1 bg-mdb-light-100 dark:bg-mdb-sec-300"
               onClick={() => pageUpdate(currPage + 1)}
             >
               &gt;
