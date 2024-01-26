@@ -1,30 +1,57 @@
 import React from "react";
-import logo from "../assets/logo.svg";
+import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+import logo from "../assets/logo.svg";
+
+const schema = z.object({
+  username: z
+    .string()
+    .min(3, { message: "Username must contain at least 3 characters" })
+    .max(20, { message: "Username must contain at most 20 characters" }),
+  email: z
+    .string()
+    .min(1, { message: "This field has to be filled." })
+    .email("This is not a valid email."),
+  password: z
+    .string()
+    .min(8, { message: "Password must contain at least 8 characters" }),
+});
 
 function Auth({ registered }) {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ resolver: zodResolver(schema) });
+
   return (
     <div className="mdb-page pb-28">
       <h5 className="flex flex-wrap max-w-full justify-center gap-3 text-center py-10 text-5xl font-medium">
-        Welcome {registered && "back"} to{" "}
+        Welcome {registered && "back"} to
         <img src={logo} alt="MoviesDB" className="w-44" />
       </h5>
 
       <div className="rounded w-11/12 sm:w-96 p-4 bg-gray-100 dark:bg-mdb-sec-300 shadow-lg shadow-gray-400 dark:shadow-gray-900 mx-auto">
-        <form>
+        <form onSubmit={handleSubmit((data) => console.log(data))}>
           <div className="mb-5">
             <label htmlFor="email" className="block my-2 text-sm font-semibold">
               Email
             </label>
             <input
               type="email"
+              {...register("email")}
               id="email"
               placeholder="johndoe@email.com"
               autoComplete="email"
               className="rounded-md w-full bg-white dark:bg-mdb-sec-200 shadow-inner focus:shadow sm:max-w-md bg-transparent p-2 text-gray-900 dark:text-white focus:ring-0 sm:text-sm sm:leading-6"
             />
+            <p className="text-xs font-semibold mt-1 text-red-500">
+              {errors.email?.message}
+            </p>
           </div>
           {!registered && (
             <div className="mb-5">
@@ -35,12 +62,16 @@ function Auth({ registered }) {
                 Username
               </label>
               <input
-                type="username"
+                type="text"
+                {...register("username")}
                 id="username"
                 placeholder="johndoe"
                 autoComplete="username"
                 className="rounded-md w-full bg-white dark:bg-mdb-sec-200 shadow-inner focus:shadow sm:max-w-md bg-transparent p-2 text-gray-900 dark:text-white focus:ring-0 sm:text-sm sm:leading-6"
               />
+              <p className="text-xs font-semibold mt-1 text-red-500">
+                {errors.username?.message}
+              </p>
             </div>
           )}
           <div className="mb-5">
@@ -52,13 +83,20 @@ function Auth({ registered }) {
             </label>
             <input
               type="password"
+              {...register("password")}
               id="password"
               placeholder="Enter your password"
-              autoComplete="password"
+              autoComplete={registered ? "current-password" : "new-password"}
               className="rounded-md w-full bg-white dark:bg-mdb-sec-200 shadow-inner focus:shadow sm:max-w-md bg-transparent p-2 text-gray-900 dark:text-white focus:ring-0 sm:text-sm sm:leading-6"
             />
+            <p className="text-xs font-semibold mt-1 text-red-500">
+              {errors.password?.message}
+            </p>
           </div>
-          <button className="btn w-full mt-4 bg-mdb-red text-white">
+          <button
+            type="submit"
+            className="btn w-full mt-4 bg-mdb-red text-white"
+          >
             {registered ? "Login" : "Signup"}
           </button>
         </form>
