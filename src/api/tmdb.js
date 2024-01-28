@@ -1,6 +1,5 @@
 import { axiosAPI } from "./axiosAPI";
 
-
 const TMDB_BASE_URL = 'https://api.themoviedb.org/3'
 
 const reqHeader = {

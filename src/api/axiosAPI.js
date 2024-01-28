@@ -1,7 +1,6 @@
 import axios from 'axios'
 
 export const axiosAPI = async (httpMethod, url, reqBody, reqHeader) => {
-
 	const reqConfig = {
 		method: httpMethod,
 		url,
@@ -11,6 +10,8 @@ export const axiosAPI = async (httpMethod, url, reqBody, reqHeader) => {
 
 	return await axios(reqConfig).then((result) => {
 		return result
-	}).catch((error) => { return error })
+	}).catch((error) => {
+		return error
+	})
 
 }

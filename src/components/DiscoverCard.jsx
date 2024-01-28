@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function DiscoverCard({ movie }) {
   const { id, poster_path, vote_average } = movie;
   const title = movie.first_air_date ? movie.name : movie.title;
-  const type = movie.first_air_date?"tvshows":"movies"
+  const type = movie.first_air_date ? "tvshows" : "movies";
   const ratingColor =
     vote_average < 6
       ? "text-red-600"

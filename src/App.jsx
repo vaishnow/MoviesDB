@@ -4,16 +4,16 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import LazyLoadPage from "./pages/LazyLoadPage";
 const Home = lazy(() => import("./pages/Home"));
-const MoviesList=lazy(()=>import("./pages/MoviesList"));
-const Movie=lazy(()=>import("./pages/Movie"));
-const Auth=lazy(()=>import("./pages/Auth"));
-const NotFound=lazy(()=>import("./pages/NotFound"));
+const MoviesList = lazy(() => import("./pages/MoviesList"));
+const Movie = lazy(() => import("./pages/Movie"));
+const Auth = lazy(() => import("./pages/Auth"));
+const NotFound = lazy(() => import("./pages/NotFound"));
 
 function Layout() {
   return (
     <>
       <Header />
-      <Suspense fallback={<LazyLoadPage/>}>
+      <Suspense fallback={<LazyLoadPage />}>
         <Outlet />
       </Suspense>
       <Footer />
