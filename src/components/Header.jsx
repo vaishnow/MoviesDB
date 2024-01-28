@@ -7,8 +7,8 @@ function Header() {
   return (
     <nav
       className={
-        (navExpanded ? " " : "flex") +
-        " md:flex justify-between font-semibold dark:bg-mdb-dark dark:text-mdb-light"
+        (navExpanded ? "fixed w-3/4 h-full z-20 shadow-md shadow-slate-500" : "flex") +
+        " md:flex justify-between font-semibold bg-mdb-light-100 dark:bg-mdb-dark dark:text-mdb-light"
       }
     >
       <div className=" md:hidden">
