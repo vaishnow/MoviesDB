@@ -1,0 +1,62 @@
+#top .text-h5 {
+	font-size: clamp(2rem, 3rem, 3vw);
+}
+
+#top .text-h4 {
+	font-size: clamp(3.6rem, 6.6vw, 7rem);
+	font-weight: 700;
+	background: -webkit-linear-gradient(#7001de, #ff01e6);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.intro-movie-card {
+	display: block;
+	border-radius: 1rem;
+	aspect-ratio: 10/16;
+	width: 20rem;
+	min-width: 40vw;
+	max-width: 60vw;
+	margin-left: 10vw;
+	position: relative;
+	transition: ease .4s;
+	box-shadow: 0 0 2px gray;
+}
+
+.intro-movie-card:hover {
+	z-index: 10;
+	scale: 105%;
+}
+
+.imc-container {
+	margin-left: 7vw;
+	max-width: 10vw;
+}
+
+@media (min-width:640px) {
+	.intro-movie-card {
+		min-width: 40vw;
+		max-width: 60vw;
+	}
+
+	.imc-container {
+		margin-left: 0;
+		width: 50%;
+		max-width: 45vw;
+	}
+
+}
+
+@media (min-width:1280px) {
+	.intro-movie-card {
+		min-width: 20vw;
+		width: 30rem;
+		margin-left: auto;
+		max-width: 25vw;
+	}
+
+	.imc-container {
+		max-width: 25vw;
+	}
+
+}

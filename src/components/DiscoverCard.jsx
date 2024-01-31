@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./DiscoverCard.css";
 
 function DiscoverCard({ movie }) {
   const { id, poster_path, vote_average } = movie;

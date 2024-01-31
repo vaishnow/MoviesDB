@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./MovieCard.css";
 
 function MovieCard({ content, movie, genres }) {
   const { id, poster_path, vote_average } = movie;

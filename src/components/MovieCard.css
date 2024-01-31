@@ -1,0 +1,12 @@
+.movie-card {
+	aspect-ratio: 16/11;
+}
+
+.movie-card-title {
+	width: 175px;
+}
+
+.movie-card img {
+	aspect-ratio: 11/16;
+	height: 100%;
+}

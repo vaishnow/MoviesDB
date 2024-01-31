@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import DiscoverList from "../components/DiscoverList";
+import "./Home.css";
 
 function Home() {
   const discoverMovies = {

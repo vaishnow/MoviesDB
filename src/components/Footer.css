@@ -1,0 +1,19 @@
+footer {
+	@apply shadow dark:shadow-gray-800 shadow-current
+}
+
+.fluid {
+	aspect-ratio: 1/1;
+	border-radius: 50%;
+	transition: 0s;
+}
+
+.fluid:hover {
+	background-image: url('./assets/fluid.gif');
+	background-size: 130%;
+	background-position: center;
+	background-repeat: no-repeat;
+	border-radius: 50%;
+	aspect-ratio: 1/1;
+	height: 3rem;
+}

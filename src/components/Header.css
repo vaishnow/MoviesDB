@@ -1,0 +1,15 @@
+nav ul li a {
+	display: block;
+	text-align: center;
+	padding: 1rem;
+}
+
+nav {
+	@apply relative shadow shadow-gray-300 dark:shadow-gray-800
+}
+
+
+
+nav ul li {
+	@apply w-auto md:w-32 my-1
+}

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { discoverContent } from "../api/tmdb";
+import "./Movie.css";
 
 function Movie({ content }) {
   const [movieDetails, setMovieDetails] = useState({});

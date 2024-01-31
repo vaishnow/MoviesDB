@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import DiscoverCard from "./DiscoverCard";
-import { discoverContent } from "../api/tmdb";
 import { Link } from "react-router-dom";
+import { discoverContent } from "../api/tmdb";
+import DiscoverCard from "./DiscoverCard";
+import "./DiscoverList.css";
 
 function DiscoverList({ content }) {
   const [exploreContent, setExploreContent] = useState([]);
