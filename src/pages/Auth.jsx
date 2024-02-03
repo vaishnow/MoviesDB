@@ -1,32 +1,67 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import logo from "../assets/logo.svg";
+import { userLogin, userRegister } from "../api/moviesDB";
 
-const schema = z.object({
-  username: z
-    .string()
-    .min(3, { message: "Username must contain at least 3 characters" })
-    .max(20, { message: "Username must contain at most 20 characters" }),
-  email: z
-    .string()
-    .min(1, { message: "This field has to be filled." })
-    .email("This is not a valid email."),
-  password: z
-    .string()
-    .min(8, { message: "Password must contain at least 8 characters" }),
-});
+const generateUserSchema = (isLoginForm) => {
+  console.log("gen");
+  return z.object({
+    username: isLoginForm
+      ? z.string().optional()
+      : z
+          .string()
+          .min(3, { message: "Username must contain at least 3 characters" })
+          .max(20, { message: "Username must contain at most 20 characters" }),
+    email: z
+      .string()
+      .min(1, { message: "This field has to be filled." })
+      .email("This is not a valid email."),
+    password: z
+      .string()
+      .min(8, { message: "Password must contain at least 8 characters" }),
+  });
+};
 
 function Auth({ registered }) {
+  const schema = generateUserSchema(registered);
   const {
     register,
     handleSubmit,
+    reset,
+    resetField,
     formState: { errors },
   } = useForm({ resolver: zodResolver(schema) });
+  const navigate = useNavigate();
+
+  const handleRegister = async (data) => {
+    const response = await userRegister(data);
+    if (response.status === 200) {
+      alert(`Registration Successful`);
+      navigate("/user/login");
+      resetField("password");
+    } else {
+      alert(response.response.data.message || `Registration Failed`);
+      reset();
+    }
+  };
+
+  const handleLogin = async (data) => {
+    const response = await userLogin(data);
+    if (response.status === 200) {
+      alert(`Login Successful`);
+      sessionStorage.setItem("userdata", response.data.userdata);
+      // TODO : navigate to dashboard
+      navigate("/");
+    } else {
+      alert(response.response.data.message || `Login Failed`);
+      reset();
+    }
+  };
 
   return (
     <div className="mdb-page pb-28">
@@ -36,7 +71,11 @@ function Auth({ registered }) {
       </h5>
 
       <div className="rounded w-11/12 sm:w-96 p-4 bg-gray-100 dark:bg-mdb-sec-300 shadow-lg shadow-gray-400 dark:shadow-gray-900 mx-auto">
-        <form onSubmit={handleSubmit((data) => console.log(data))}>
+        <form
+          onSubmit={handleSubmit((data) => {
+            registered ? handleLogin(data) : handleRegister(data);
+          })}
+        >
           <div className="mb-5">
             <label htmlFor="email" className="block my-2 text-sm font-semibold">
               Email
