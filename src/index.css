@@ -2,7 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-/* global begin */
+.Toastify__toast {
+	box-shadow: 0 0 10px #7f7f7f !important;
+}
+
 html {
 	overscroll-behavior: none;
 	scroll-behavior: smooth;

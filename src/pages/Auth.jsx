@@ -7,6 +7,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import logo from "../assets/logo.svg";
 import { userLogin, userRegister } from "../api/moviesDB";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const generateUserSchema = (isLoginForm) => {
   console.log("gen");
@@ -41,11 +43,11 @@ function Auth({ registered }) {
   const handleRegister = async (data) => {
     const response = await userRegister(data);
     if (response.status === 200) {
-      alert(`Registration Successful`);
-      navigate("/user/login");
+      toast.success(`Registration Successful`);
+      setTimeout(() => navigate("/user/login"), 2000);
       resetField("password");
     } else {
-      alert(response.response.data.message || `Registration Failed`);
+      toast.error(response.response.data.message || `Registration Failed`);
       reset();
     }
   };
@@ -53,12 +55,12 @@ function Auth({ registered }) {
   const handleLogin = async (data) => {
     const response = await userLogin(data);
     if (response.status === 200) {
-      alert(`Login Successful`);
+      toast.success(`Login Successful`);
       sessionStorage.setItem("userdata", response.data.userdata);
       // TODO : navigate to dashboard
-      navigate("/");
+      setTimeout(() => navigate("/"), 2000);
     } else {
-      alert(response.response.data.message || `Login Failed`);
+      toast.error(response.response.data.message || `Login Failed`);
       reset();
     }
   };
@@ -150,6 +152,15 @@ function Auth({ registered }) {
           <FontAwesomeIcon icon={faArrowRight} />
         </Link>
       </div>
+      <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        limit={2}
+        hideProgressBar
+        newestOnTop
+        closeOnClick={false}
+        theme="dark"
+      />
     </div>
   );
 }
