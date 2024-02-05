@@ -11,7 +11,6 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const generateUserSchema = (isLoginForm) => {
-  console.log("gen");
   return z.object({
     username: isLoginForm
       ? z.string().optional()
@@ -56,7 +55,8 @@ function Auth({ registered }) {
     const response = await userLogin(data);
     if (response.status === 200) {
       toast.success(`Login Successful`);
-      sessionStorage.setItem("userdata", response.data.userdata);
+      sessionStorage.setItem("userdata", JSON.stringify(response.data.userdata));
+      sessionStorage.setItem("token", response.data.token);
       // TODO : navigate to dashboard
       setTimeout(() => navigate("/"), 2000);
     } else {
