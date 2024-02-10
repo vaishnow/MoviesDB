@@ -8,6 +8,7 @@ const MoviesList = lazy(() => import("./pages/MoviesList"));
 const Movie = lazy(() => import("./pages/Movie"));
 const Auth = lazy(() => import("./pages/Auth"));
 const NotFound = lazy(() => import("./pages/NotFound"));
+const Dashboard = lazy(() => import("./pages/Dashboard"));
 
 function Layout() {
   return (
@@ -63,6 +64,10 @@ function App() {
             {
               path: "tvshows/:id",
               element: <Movie content="tv" />,
+            },
+            {
+              path: "dashboard",
+              element: <Dashboard />,
             },
           ],
         },

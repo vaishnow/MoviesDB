@@ -9,3 +9,7 @@ export const userRegister = async (reqBody) => {
 export const userLogin = async (reqBody) => {
 	return await axiosAPI('POST', `${MDB_BASE_URL}/user/login`, reqBody)
 }
+
+export const getUserData = async (reqHeader) => {
+	return await axiosAPI('POST', `${MDB_BASE_URL}/user/details`,{},reqHeader)
+}
