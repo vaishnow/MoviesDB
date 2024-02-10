@@ -8,8 +8,12 @@ footer {
 	transition: 0s;
 }
 
+.fluid svg{
+	margin: auto;
+}
+
 .fluid:hover {
-	background-image: url('./assets/fluid.gif');
+	background-image: url('../assets/fluid.gif');
 	background-size: 130%;
 	background-position: center;
 	background-repeat: no-repeat;

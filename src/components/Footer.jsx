@@ -1,12 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faDiscord,
-  faInstagram,
-  faLinkedin,
-  faXTwitter,
-} from "@fortawesome/free-brands-svg-icons";
+import { FaDiscord, FaInstagram } from "react-icons/fa";
+import { FaLinkedinIn, FaXTwitter } from "react-icons/fa6";
 import "./Footer.css";
 
 function Footer() {
@@ -61,22 +56,22 @@ function Footer() {
   const footerSocialMedia = [
     {
       path: "https://instagram.com",
-      faIcon: faInstagram,
+      faIcon: <FaInstagram />,
       label: "Instagram",
     },
     {
       path: "https://instagram.com",
-      faIcon: faXTwitter,
+      faIcon: <FaXTwitter />,
       label: "Twitter",
     },
     {
       path: "https://instagram.com",
-      faIcon: faLinkedin,
+      faIcon: <FaLinkedinIn />,
       label: "LinkedIn",
     },
     {
       path: "https://instagram.com",
-      faIcon: faDiscord,
+      faIcon: <FaDiscord />,
       label: "Discord",
     },
   ];
@@ -102,11 +97,7 @@ function Footer() {
         className="py-2 h-12 fluid "
         rel="noopener noreferrer"
       >
-        <FontAwesomeIcon
-          className="block m-auto"
-          icon={item.faIcon}
-          aria-label={item.desc}
-        />
+        {item.faIcon}
       </Link>
     ));
   };

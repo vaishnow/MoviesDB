@@ -3,8 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { FaArrowRight } from "react-icons/fa";
 import logo from "../assets/logo.svg";
 import { userLogin, userRegister } from "../api/moviesDB";
 import { ToastContainer, toast } from "react-toastify";
@@ -55,7 +54,10 @@ function Auth({ registered }) {
     const response = await userLogin(data);
     if (response.status === 200) {
       toast.success(`Login Successful`);
-      sessionStorage.setItem("userdata", JSON.stringify(response.data.userdata));
+      sessionStorage.setItem(
+        "userdata",
+        JSON.stringify(response.data.userdata)
+      );
       sessionStorage.setItem("token", response.data.token);
       // TODO : navigate to dashboard
       setTimeout(() => navigate("/"), 2000);
@@ -142,15 +144,17 @@ function Auth({ registered }) {
           </button>
         </form>
       </div>
-      <div className="mt-5 rounded w-11/12 sm:w-96 p-4 border border-black dark:border-white  shadow-lg shadow-gray-400 dark:shadow-gray-900 mx-auto text-center">
-        {registered ? "New to MoviesDB?" : "Already a member?"}
-        <Link
-          to={registered ? "/user/register" : "/user/login"}
-          className="font-extrabold px-2 py-3"
-        >
-          Sign {registered ? "up" : "in"}{" "}
-          <FontAwesomeIcon icon={faArrowRight} />
-        </Link>
+      <div className="mt-5 rounded w-11/12 sm:w-96 p-4 border border-black dark:border-white  shadow-lg shadow-gray-400 dark:shadow-gray-900 mx-auto  ">
+        <div className="mx-auto flex w-fit">
+          {registered ? "New to MoviesDB?" : "Already a member?"}
+          <Link
+            to={registered ? "/user/register" : "/user/login"}
+            className="font-extrabold px-2 flex"
+          >
+            <span>Sign {registered ? "up" : "in"} </span>
+            <FaArrowRight className="self-center" />
+          </Link>
+        </div>
       </div>
       <ToastContainer
         position="top-center"
