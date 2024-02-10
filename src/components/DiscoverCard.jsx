@@ -33,7 +33,7 @@ function DiscoverCard({ movie }) {
           }
         >
           <span className="m-auto text-shadow dark:text-shadow-white">
-            {vote_average}
+            {parseFloat(vote_average.toFixed(2))}
           </span>
         </div>
       </div>
