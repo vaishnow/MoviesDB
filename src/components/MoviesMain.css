@@ -1,0 +1,9 @@
+.movie-actions {
+	height: 2.5rem;
+	width: 2.5rem;
+	padding: .5rem;
+}
+
+.movie-actions:hover{
+	scale: 1.2;
+}

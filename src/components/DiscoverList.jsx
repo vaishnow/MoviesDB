@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { discoverContent } from "../api/tmdb";
 import DiscoverCard from "./DiscoverCard";
-import "./DiscoverList.css";
 
 function DiscoverList({ content }) {
   const [exploreContent, setExploreContent] = useState([]);
@@ -25,7 +24,7 @@ function DiscoverList({ content }) {
       <div className="px-1 py-1 mt-32">
         <h6 className="text-center">{content.title}</h6>
       </div>
-      <div className="edl py-5 flex overflow-x-scroll snap-mandatory snap-x">
+      <div className="edl snap-mandatory snap-x">
         {exploreContent?.map((item) => (
           <DiscoverCard key={item.id} movie={item} />
         ))}

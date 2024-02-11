@@ -43,6 +43,18 @@ textarea:focus {
 	outline: 2px solid gray;
 }
 
+.edl {
+	scroll-behavior: smooth;
+	display: flex;
+	overflow-x: scroll;
+	padding-top: 1.25rem;
+	padding-bottom: 1.25rem;
+  }
+  
+  .edl::-webkit-scrollbar {
+	display: none;
+  }
+
 /* TMP BEGIN */
 * {
 	/* border: .1px solid red; */

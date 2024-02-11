@@ -1,7 +1,0 @@
-.edl {
-  scroll-behavior: smooth;
-}
-
-.edl::-webkit-scrollbar {
-  display: none;
-}
