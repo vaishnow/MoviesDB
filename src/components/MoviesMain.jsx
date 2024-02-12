@@ -44,9 +44,9 @@ const MoviesMain = ({ movieDetails }) => {
                 <FaRegBookmark className="movie-actions" />
               )}
             </button>
-            <button>
+            <a href="#videos">
               <FaRegCirclePlay className="movie-actions" />
-            </button>
+            </a>
             <button>
               <FaDisplay className="movie-actions" />
             </button>
