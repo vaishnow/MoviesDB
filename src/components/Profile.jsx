@@ -9,11 +9,7 @@ const Profile = () => {
   const navigate = useNavigate();
 
   const getUserDetails = async () => {
-    const reqHeader = {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${sessionStorage.getItem("token")}`,
-    };
-    const result = await getUserData(reqHeader);
+    const result = await getUserData();
     if (result.status === 200) {
       setUserDetails(result.data.userdata);
     } else {
