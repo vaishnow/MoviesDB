@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { getUserData } from "../api/moviesDB";
 import backdrop from "../assets/logo.svg";
 import "./Profile.css";
 
 const Profile = () => {
   const [userDetails, setUserDetails] = useState({});
+  const navigate = useNavigate();
 
   const getUserDetails = async () => {
     const reqHeader = {
@@ -16,6 +18,7 @@ const Profile = () => {
       setUserDetails(result.data.userdata);
     } else {
       alert(`An error occured, please try again later`);
+      navigate("/user/register");
     }
   };
 
