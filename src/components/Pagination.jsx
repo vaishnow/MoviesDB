@@ -47,7 +47,7 @@ const Pagination = ({ currPage, pageUpdate, totalPages }) => {
             </button>
           )}
           {/* Dots */}
-          {currPage < 497 && <span className="btn">...</span>}
+          {currPage < 498 && <span className="btn">...</span>}
           {/* Last Page Button */}
           {currPage < lastPage && (
             <button
