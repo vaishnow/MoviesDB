@@ -1,23 +1,9 @@
-import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { discoverContent } from "../api/tmdb";
+import useContent from "../hooks/useContent";
 import DiscoverCard from "./DiscoverCard";
 
 function DiscoverList({ content }) {
-  const [exploreContent, setExploreContent] = useState([]);
-
-  const getExploreContent = async () => {
-    const result = await discoverContent(content.api);
-    if (result.status === 200) {
-      setExploreContent(result.data.results);
-    } else {
-      console.log(result.response.data);
-    }
-  };
-
-  useEffect(() => {
-    getExploreContent();
-  }, []);
+  const [contentDetails] = useContent(content.api);
 
   return (
     <div className="px-5 md min-h-max">
@@ -25,7 +11,7 @@ function DiscoverList({ content }) {
         <h6 className="text-center">{content.title}</h6>
       </div>
       <div className="edl snap-mandatory snap-x">
-        {exploreContent?.map((item) => (
+        {contentDetails.results?.map((item) => (
           <DiscoverCard key={item.id} movie={item} />
         ))}
       </div>

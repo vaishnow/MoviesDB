@@ -1,31 +1,17 @@
-import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
+import useContent from "../hooks/useContent";
 import MoviesMain from "../components/MoviesMain";
 import MoviesCrew from "../components/MoviesCrew";
 import Videos from "../components/Videos";
-import { discoverContent } from "../api/tmdb";
 import "./Movie.css";
 import "react-toastify/dist/ReactToastify.css";
 
 function Movie({ content }) {
-  const [movieDetails, setMovieDetails] = useState({});
   const { id } = useParams("id");
-
-  const getMovieDetails = async () => {
-    let result = await discoverContent(
-      `/${content}/${id}?language=en-US&append_to_response=credits,videos`
-    );
-    if (result.status === 200) {
-      setMovieDetails(result.data);
-    } else {
-      console.log(result.response.data);
-    }
-  };
-
-  useEffect(() => {
-    getMovieDetails();
-  }, []);
+  const [movieDetails] = useContent(
+    `/${content}/${id}?language=en-US&append_to_response=credits,videos`
+  );
 
   return (
     <div className="mdb-page p-2 sm:p-4">
