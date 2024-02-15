@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .Toastify__toast {
-	box-shadow: 0 0 10px #7f7f7f !important;
+	box-shadow: 0 0 2px #7f7f7f !important;
 }
 
 html {
@@ -49,11 +49,11 @@ textarea:focus {
 	overflow-x: scroll;
 	padding-top: 1.25rem;
 	padding-bottom: 1.25rem;
-  }
-  
-  .edl::-webkit-scrollbar {
+}
+
+.edl::-webkit-scrollbar {
 	display: none;
-  }
+}
 
 /* TMP BEGIN */
 * {
