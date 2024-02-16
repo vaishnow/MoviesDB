@@ -1,5 +1,6 @@
-import React from "react";
 import { Link } from "react-router-dom";
+import spinner from "../assets/spinner.gif";
+import broken from "../assets/broken.png";
 import "./MovieCard.css";
 
 function MovieCard({ content, movie, genres }) {
@@ -13,6 +14,12 @@ function MovieCard({ content, movie, genres }) {
     return "text-green-400";
   };
 
+  const getImg = () => {
+    if (poster_path==="_") return spinner;
+    if (poster_path) return `https://image.tmdb.org/t/p/w200${poster_path}`;
+    return broken;
+  };
+
   const ratingColor = getRatingColor();
 
   return (
@@ -23,8 +30,8 @@ function MovieCard({ content, movie, genres }) {
       >
         <img
           loading="lazy"
-          className="rounded-l"
-          src={`https://image.tmdb.org/t/p/w200//${poster_path}`}
+          className="rounded-l object-cover"
+          src={getImg()}
         />
         <div className="relative w-0 right-9 top-1 ">
           <div
@@ -34,7 +41,7 @@ function MovieCard({ content, movie, genres }) {
             }
           >
             <span className="m-auto text-shadow dark:text-shadow-white">
-              {parseFloat(vote_average.toFixed(2))}
+              {parseFloat(vote_average?.toFixed(2))}
             </span>
           </div>
         </div>
