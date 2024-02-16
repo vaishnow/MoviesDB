@@ -40,8 +40,8 @@ function MoviesList({ content }) {
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-3 p-4">
         {contentList.results?.map((item) => {
-          let gList = item.genre_ids?.map((gid) =>
-            genreList.genres?.find((genre) => gid === genre.id)
+          let gList = genreList.genres?.filter((genre) =>
+            item.genre_ids.includes(genre.id)
           );
           return (
             <MovieCard

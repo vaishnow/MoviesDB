@@ -6,12 +6,14 @@ function MovieCard({ content, movie, genres }) {
   const { id, poster_path, vote_average } = movie;
   const title = movie.name || movie.title;
   const year = (movie.release_date || movie.first_air_date)?.slice(0, 4);
-  const ratingColor =
-    vote_average < 6
-      ? "text-red-600"
-      : vote_average < 7
-      ? "text-yellow-400"
-      : "text-green-400";
+
+  const getRatingColor = () => {
+    if (vote_average < 6) return "text-red-600";
+    if (vote_average < 7) return "text-yellow-400";
+    return "text-green-400";
+  };
+
+  const ratingColor = getRatingColor();
 
   return (
     <div className="movie-card bg-gray-300 dark:bg-mdb-sec-300 w-full max-w-full max-h-48 object-cover snap-proximity rounded m-1">
@@ -44,9 +46,9 @@ function MovieCard({ content, movie, genres }) {
             {year}
           </div>
           <div className="flex flex-wrap gap-y-2 gap-x-2 mt-2">
-            {genres?.map((item, i) => (
+            {genres?.map((item) => (
               <div
-                key={i}
+                key={item.id}
                 className="rounded-lg text-sm bg-purple-800 text-white px-1 pb-0.5 "
               >
                 {item?.name}
