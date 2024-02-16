@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 import {
   FaRegCirclePlay,
   FaBookmark,
@@ -7,14 +8,66 @@ import {
   FaRegHeart,
   FaDisplay,
 } from "react-icons/fa6";
+import { getContentStats, likeContent, saveContent } from "../api/moviesDB";
 import "./MoviesMain.css";
 
-const MoviesMain = ({ movieDetails }) => {
+const MoviesMain = ({ movieDetails, type }) => {
+  const [isLiked, setIsLiked] = useState(false);
+  const [isSaved, setIsSaved] = useState(false);
+
+  const {
+    id,
+    backdrop_path,
+    poster_path,
+    title,
+    name,
+    release_date,
+    first_air_date,
+    runtime,
+    genres,
+    overview,
+  } = movieDetails;
+
+  const handleAction = async (action, stateChange) => {
+    if (sessionStorage.getItem("token")) {
+      const result = await action();
+      if (result.status === 200) {
+        stateChange((prev) => !prev);
+        toast.success(result.data.message);
+      } else {
+        toast.error(`Something went wrong`);
+      }
+    } else {
+      toast.warn("Login to continue");
+    }
+  };
+
+  const handleLike = () =>
+    handleAction(() => likeContent(type, id, !isLiked), setIsLiked);
+  const handleSave = () =>
+    handleAction(() => saveContent(type, id, !isSaved), setIsSaved);
+
+  const fetchStatus = async () => {
+    const result = await getContentStats(type, id);
+    if (result.status === 200) {
+      setIsLiked(result.data.stats.liked);
+      setIsSaved(result.data.stats.saved);
+    } else {
+      toast.error(`Something went wrong`);
+    }
+  };
+
+  useEffect(() => {
+    if (sessionStorage.getItem("token") && id) {
+      fetchStatus();
+    }
+  }, [movieDetails]);
+
   return (
     <div
       style={
-        movieDetails.backdrop_path && {
-          backgroundImage: `url(https://image.tmdb.org/t/p/w500/${movieDetails.backdrop_path})`,
+        backdrop_path && {
+          backgroundImage: `url(https://image.tmdb.org/t/p/w500/${backdrop_path})`,
         }
       }
       className="mbg bg-no-repeat bg-cover bg-center rounded-lg w-full"
@@ -23,22 +76,21 @@ const MoviesMain = ({ movieDetails }) => {
         <div className="min-w-fit max-w-md mx-auto">
           <img
             src={
-              movieDetails.poster_path &&
-              `https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}`
+              poster_path && `https://image.tmdb.org/t/p/w500/${poster_path}`
             }
             alt=""
             className="rounded w-full md:w-80"
           />
           <div className="mt-4 flex justify-around text-2xl">
-            <button onClick={() => console.log("like")}>
-              {true ? (
+            <button onClick={handleLike}>
+              {isLiked ? (
                 <FaHeart className="movie-actions text-red-500" />
               ) : (
                 <FaRegHeart className="movie-actions" />
               )}
             </button>
-            <button onClick={() => console.log("like")}>
-              {true ? (
+            <button onClick={handleSave}>
+              {isSaved ? (
                 <FaBookmark className="movie-actions text-yellow-400" />
               ) : (
                 <FaRegBookmark className="movie-actions" />
@@ -56,22 +108,19 @@ const MoviesMain = ({ movieDetails }) => {
         </div>
         <div className="md:px-4 text-center my-2 md:my-0 md:text-left w-full md:overflow-hidden">
           <p className="text-5xl font-semibold md:whitespace-nowrap lg:whitespace-normal md:text-4xl md:text-ellipsis md:overflow-hidden">
-            {movieDetails.title || movieDetails.name}
+            {title || name}
           </p>
           <h6 className="text-3xl py-1 md:py-3">
-            {(movieDetails.release_date || movieDetails.first_air_date)?.slice(
-              0,
-              4
-            )}
+            {(release_date || first_air_date)?.slice(0, 4)}
           </h6>
-          {movieDetails.runtime && (
+          {runtime && (
             <div>
               <span className="text-gray-400">Runtime : </span>
-              {movieDetails.runtime} mins
+              {runtime} mins
             </div>
           )}
           <div className="flex flex-wrap py-2 md:py-4 justify-center md:justify-normal">
-            {movieDetails.genres?.map((item) => (
+            {genres?.map((item) => (
               <div
                 key={item.id}
                 className="rounded me-2 mb-2 px-1 font-semibold py-0.5 bg-purple-800"
@@ -82,7 +131,7 @@ const MoviesMain = ({ movieDetails }) => {
           </div>
           <div>
             <h4 className="text-xl text-gray-500">Overview</h4>
-            <p>{movieDetails.overview}</p>
+            <p>{overview}</p>
           </div>
         </div>
       </div>

@@ -15,7 +15,7 @@ function Movie({ content }) {
 
   return (
     <div className="mdb-page p-2 sm:p-4">
-      <MoviesMain movieDetails={movieDetails} />
+      <MoviesMain movieDetails={movieDetails} type={content} />
       <MoviesCrew crew={movieDetails.credits?.cast} title={"Actors"} />
       <MoviesCrew crew={movieDetails.credits?.crew} title={"Crew Members"} />
       <Videos videos={movieDetails.videos?.results} />

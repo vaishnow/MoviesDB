@@ -18,3 +18,15 @@ export const userLogin = async (reqBody) => {
 export const getUserData = async () => {
 	return await axiosAPI('POST', `${MDB_BASE_URL}/user/details`, {}, jwtHeader)
 }
+
+export const likeContent = async (type, tmdbId, liked) => {
+	return await axiosAPI('POST', `${MDB_BASE_URL}/mdb/${type}/${tmdbId}/like`, { liked }, jwtHeader)
+}
+
+export const saveContent = async (type, tmdbId, saved) => {
+	return await axiosAPI('POST', `${MDB_BASE_URL}/mdb/${type}/${tmdbId}/save`, { saved }, jwtHeader)
+}
+
+export const getContentStats = async (type, tmdbId) => {
+	return await axiosAPI('GET', `${MDB_BASE_URL}/mdb/${type}/${tmdbId}`, "", jwtHeader)
+}
