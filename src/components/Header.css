@@ -8,8 +8,6 @@ nav {
 	@apply relative shadow shadow-gray-300 dark:shadow-gray-800
 }
 
-
-
 nav ul li {
 	@apply w-auto md:w-32 my-1
 }

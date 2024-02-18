@@ -25,6 +25,17 @@ button {
 	transition: linear .2s;
 }
 
+.active {
+	box-shadow: 0 -2px 0 red inset;
+}
+
+@media (max-width:768px) {
+	.active {
+		box-shadow: -5px 0 1px 0px red inset;
+
+	}
+}
+
 h6 {
 	font-size: clamp(1.5rem, (100vw - 300px), 2rem);
 }

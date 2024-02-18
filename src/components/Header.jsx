@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from "../assets/logo.svg";
 import "./Header.css";
 
@@ -66,16 +66,16 @@ function Header() {
         }
       >
         <li>
-          <Link to="/">Home</Link>
+          <NavLink to="/">Home</NavLink>
+        </li>
+        {/* <li>
+          <NavLink to="/movies">Explore</NavLink>
+        </li> */}
+        <li>
+          <NavLink to="/movies">Movies</NavLink>
         </li>
         <li>
-          <Link to="/movies">Explore</Link>
-        </li>
-        <li>
-          <Link to="/movies">Movies</Link>
-        </li>
-        <li>
-          <Link to="/tvshows">TVShows</Link>
+          <NavLink to="/tvshows">TVShows</NavLink>
         </li>
       </ul>
       <Link
