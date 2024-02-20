@@ -15,6 +15,7 @@ function MoviesList({ content }) {
   const api = `${content == "movie" ? apiPrefix.movie : apiPrefix.tvshow}page=${
     filterParams.get("page") || 1
   }&sort_by=${sort.by}.${sort.order}`;
+  let type = content;
 
   const [contentList, getContentList] = useContent(api);
   const [genreList, getGenreList] = useContent(`/genre/${content}/list`);
@@ -24,14 +25,15 @@ function MoviesList({ content }) {
   };
 
   useEffect(() => {
-    getGenreList();
-    getContentList();
-    setFilterParams({ page: 1 });
-  }, [content]);
-
-  useEffect(() => {
-    getContentList();
-  }, [filterParams]);
+    if (type != content) {
+      getGenreList();
+      getContentList();
+      setFilterParams({ page: 1 });
+      type = content;
+    } else {
+      getContentList();
+    }
+  }, [content, filterParams]);
 
   return (
     <section className="mdb-page">
