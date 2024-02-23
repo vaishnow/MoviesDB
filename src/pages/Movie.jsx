@@ -6,6 +6,7 @@ import MoviesCrew from "../components/MoviesCrew";
 import Videos from "../components/Videos";
 import "./Movie.css";
 import "react-toastify/dist/ReactToastify.css";
+import ReviewPanel from "../components/ReviewPanel";
 
 function Movie({ content }) {
   const { id } = useParams("id");
@@ -18,6 +19,7 @@ function Movie({ content }) {
       <MoviesMain movieDetails={movieDetails} type={content} />
       <MoviesCrew crew={movieDetails.credits?.cast} title={"Actors"} />
       <MoviesCrew crew={movieDetails.credits?.crew} title={"Crew Members"} />
+      <ReviewPanel/>
       <Videos videos={movieDetails.videos?.results} />
       <ToastContainer
         position="top-center"

@@ -6,10 +6,19 @@
 	box-shadow: 0 0 2px #7f7f7f !important;
 }
 
+.mui-modal {
+	max-height: 90dvh;
+	overflow-y: auto;
+}
+
 html {
 	overscroll-behavior: none;
 	scroll-behavior: smooth;
 	overflow-x: hidden;
+}
+
+body {
+	padding: 0 !important;
 }
 
 .btn {
@@ -64,6 +73,17 @@ textarea:focus {
 
 .edl::-webkit-scrollbar {
 	display: none;
+}
+
+.modal-box {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 85%;
+	border: 1px solid #000;
+	box-shadow: 0 0 2px;
+	padding: 2rem;
 }
 
 /* TMP BEGIN */
