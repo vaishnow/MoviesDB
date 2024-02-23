@@ -36,7 +36,7 @@ const Pagination = ({ currPage, pageUpdate, totalPages }) => {
             </button>
           )}
           {/* Current Page */}
-          <button className="btn m-1 bg-mdb-red">{currPage}</button>
+          <button className="btn m-1 bg-mdb-red text-white">{currPage}</button>
           {/* Current Page + 1 */}
           {currPage < lastPage - 1 && (
             <button
