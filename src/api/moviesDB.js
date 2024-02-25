@@ -19,6 +19,7 @@ export const getUserData = async () => {
 	return await axiosAPI('POST', `${MDB_BASE_URL}/user/details`, {}, jwtHeader)
 }
 
+
 export const likeContent = async (type, tmdbId, liked) => {
 	return await axiosAPI('POST', `${MDB_BASE_URL}/mdb/${type}/${tmdbId}/like`, { liked }, jwtHeader)
 }
@@ -29,4 +30,13 @@ export const saveContent = async (type, tmdbId, saved) => {
 
 export const getContentStats = async (type, tmdbId) => {
 	return await axiosAPI('GET', `${MDB_BASE_URL}/mdb/${type}/${tmdbId}`, "", jwtHeader)
+}
+
+
+export const getReviews = async (type, tmdbId) => {
+	return await axiosAPI('GET', `${MDB_BASE_URL}/mdb/${type}/${tmdbId}/review`, "", jwtHeader)
+}
+
+export const setReviews = async (type, tmdbId, reqBody) => {
+	return await axiosAPI('POST', `${MDB_BASE_URL}/mdb/${type}/${tmdbId}/review/add`, reqBody, jwtHeader)
 }
