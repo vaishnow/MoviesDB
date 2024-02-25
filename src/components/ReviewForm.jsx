@@ -3,6 +3,8 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Box, Modal } from "@mui/material";
+import { setReviews } from "../api/moviesDB";
+import { toast } from "react-toastify";
 
 const ratingValidation = z.coerce
   .number()
@@ -25,7 +27,7 @@ const schema = z.object({
     .max(350, { message: `Review must not contain more than 350 characters` }),
 });
 
-const RatingInput = ({ formId, register, required, error }) => {
+const RatingInput = ({ formId, register, required, error, review }) => {
   return (
     <div className="mb-5">
       <div className="flex items-center">
@@ -34,6 +36,7 @@ const RatingInput = ({ formId, register, required, error }) => {
         </label>
         <input
           type="number"
+          defaultValue={review?.rating[formId]}
           {...register(formId)}
           id={formId}
           placeholder={required ? null : "optional"}
@@ -48,7 +51,7 @@ const RatingInput = ({ formId, register, required, error }) => {
   );
 };
 
-const ReviewForm = () => {
+const ReviewForm = ({ type, tmdbId, updateFunc, isReviewed, review }) => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -59,10 +62,21 @@ const ReviewForm = () => {
     formState: { errors },
   } = useForm({ resolver: zodResolver(schema) });
 
+  const handleReview = async (reqBody) => {
+    const result = await setReviews(type, tmdbId, reqBody);
+    if (result.status === 200) {
+      toast.success(isReviewed ? "Review Edited" : "Review Added");
+      handleClose();
+      updateFunc();
+    } else {
+      toast.error("Something went wrong");
+    }
+  };
+
   return (
     <>
       <button className="btn bg-mdb-red" onClick={handleOpen}>
-        ADD REVIEW
+        {isReviewed ? "EDIT" : "ADD"} REVIEW
       </button>
       <Modal
         open={open}
@@ -72,7 +86,7 @@ const ReviewForm = () => {
       >
         <Box className="modal-box rounded mdb-page overflow-y-scroll mui-modal">
           <form
-            onSubmit={handleSubmit((data) => console.log(data))}
+            onSubmit={handleSubmit((data) => handleReview(data))}
             className=" lg:flex lg:justify-between"
           >
             <div className="mb-16 lg:mb-0">
@@ -82,26 +96,31 @@ const ReviewForm = () => {
                 formId="plot"
                 register={register}
                 error={errors.plot}
+                review={review}
               />
               <RatingInput
                 formId="visuals"
                 register={register}
                 error={errors.visuals}
+                review={review}
               />
               <RatingInput
                 formId="sound"
                 register={register}
                 error={errors.sound}
+                review={review}
               />
               <RatingInput
                 formId="characters"
                 register={register}
                 error={errors.characters}
+                review={review}
               />
               <RatingInput
                 formId="overall"
                 register={register}
                 error={errors.overall}
+                review={review}
                 required
               />
             </div>
@@ -110,14 +129,17 @@ const ReviewForm = () => {
               <hr className="h-1 border-0 my-5 bg-mdb-red" />
               <textarea
                 {...register("review")}
+                defaultValue={review?.review}
                 cols="30"
                 rows="9"
                 className="rounded-md h-max w-full bg-white dark:bg-mdb-sec-200 shadow-inner focus:shadow bg-transparent p-2 text-gray-900 dark:text-white focus:ring-0 sm:leading-6"
               ></textarea>
               <div className="flex">
-                <p className="text-xs font-semibold mt-1 text-red-500">{errors.review?.message}</p>
+                <p className="text-xs font-semibold mt-1 text-red-500">
+                  {errors.review?.message}
+                </p>
                 <button type="submit" className="btn bg-mdb-red  ms-auto mt-3">
-                  Add review
+                  {isReviewed ? "Edit" : "Add"} review
                 </button>
               </div>
             </div>

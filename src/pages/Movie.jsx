@@ -19,7 +19,7 @@ function Movie({ content }) {
       <MoviesMain movieDetails={movieDetails} type={content} />
       <MoviesCrew crew={movieDetails.credits?.cast} title={"Actors"} />
       <MoviesCrew crew={movieDetails.credits?.crew} title={"Crew Members"} />
-      <ReviewPanel/>
+      <ReviewPanel type={content} tmdbId={id} />
       <Videos videos={movieDetails.videos?.results} />
       <ToastContainer
         position="top-center"
