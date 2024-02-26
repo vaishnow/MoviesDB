@@ -12,11 +12,11 @@ export const userRegister = async (reqBody) => {
 }
 
 export const userLogin = async (reqBody) => {
-	return await axiosAPI('POST', `${MDB_BASE_URL}/user/login`, reqBody)
+	return await axiosAPI('GET', `${MDB_BASE_URL}/user/login`, reqBody)
 }
 
 export const getUserData = async () => {
-	return await axiosAPI('POST', `${MDB_BASE_URL}/user/details`, {}, jwtHeader)
+	return await axiosAPI('GET', `${MDB_BASE_URL}/user/details`, {}, jwtHeader)
 }
 
 
