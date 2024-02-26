@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { getUserData } from "../api/moviesDB";
+import { useUserDetail } from "../contexts/UserProvider";
 import backdrop from "../assets/logo.svg";
 import "./Profile.css";
 
 const Profile = () => {
-  const [userDetails, setUserDetails] = useState({});
+  const { userDetails, setUserDetails } = useUserDetail();
   const navigate = useNavigate();
 
   const getUserDetails = async () => {
