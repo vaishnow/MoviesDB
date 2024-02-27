@@ -48,7 +48,8 @@ const MoviesMain = ({ movieDetails, type }) => {
     handleAction(() => saveContent(type, id, !isSaved), setIsSaved);
 
   const fetchStatus = async () => {
-    const result = await getContentStats(type, id);
+    const listCache = { poster_path, title: title || name, genres };
+    const result = await getContentStats(type, id, listCache);
     if (result.status === 200) {
       setIsLiked(result.data.stats.liked);
       setIsSaved(result.data.stats.saved);
