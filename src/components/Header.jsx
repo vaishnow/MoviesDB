@@ -5,6 +5,7 @@ import "./Header.css";
 
 function Header() {
   const [navExpanded, setNavExpanded] = useState(false);
+  const isLoggedIn = sessionStorage.getItem("token");
   return (
     <nav
       className={
@@ -80,9 +81,9 @@ function Header() {
       </ul>
       <Link
         className={(navExpanded ? "hidden " : "") + "btn my-auto bg-"}
-        to="/user/register"
+        to={isLoggedIn ? "/dashboard" : "/user/register"}
       >
-        Sign up
+        {isLoggedIn ? "Dashboard" : " Sign up"}
       </Link>
     </nav>
   );
