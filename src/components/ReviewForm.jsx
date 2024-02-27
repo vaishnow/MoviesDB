@@ -73,9 +73,14 @@ const ReviewForm = ({ type, tmdbId, updateFunc, isReviewed, review }) => {
     }
   };
 
+  const loginAlert = () => toast.warn("Login to continue");
+
   return (
     <>
-      <button className="btn bg-mdb-red" onClick={handleOpen}>
+      <button
+        className="btn bg-mdb-red"
+        onClick={sessionStorage.getItem("token") ? handleOpen : loginAlert}
+      >
         {isReviewed ? "EDIT" : "ADD"} REVIEW
       </button>
       <Modal

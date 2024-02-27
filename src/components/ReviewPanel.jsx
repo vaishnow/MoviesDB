@@ -19,14 +19,20 @@ const ReviewPanel = ({ type, tmdbId }) => {
   };
 
   useEffect(() => {
-    getMdbReview();
+    sessionStorage.getItem("token") && getMdbReview();
   }, []);
 
   return (
     <section className="m-5">
       <h4 className="font-semibold text-2xl pb-0">Reviews</h4>
       <Reviews reviews={mdbReviews} />
-      <ReviewForm type={type} tmdbId={tmdbId} updateFunc={getMdbReview} isReviewed={isReviewed} review={isReviewed?mdbReviews[0]:null}/>
+      <ReviewForm
+        type={type}
+        tmdbId={tmdbId}
+        updateFunc={getMdbReview}
+        isReviewed={isReviewed}
+        review={isReviewed ? mdbReviews[0] : null}
+      />
     </section>
   );
 };
