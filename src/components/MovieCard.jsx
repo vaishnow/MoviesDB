@@ -15,7 +15,7 @@ function MovieCard({ content, movie, genres }) {
   };
 
   const getImg = () => {
-    if (poster_path==="_") return spinner;
+    if (poster_path === "_") return spinner;
     if (poster_path) return `https://image.tmdb.org/t/p/w200${poster_path}`;
     return broken;
   };
@@ -28,23 +28,21 @@ function MovieCard({ content, movie, genres }) {
         className="flex h-full pe-2"
         to={`/${content == "tv" ? "tvshows" : "movies"}/${id}`}
       >
-        <img
-          loading="lazy"
-          className="rounded-l object-cover"
-          src={getImg()}
-        />
-        <div className="relative w-0 right-9 top-1 ">
-          <div
-            className={
-              "min-w-8 w-8 h-8 flex rounded-2xl bg-gray-400 dark:bg-gray-600 font-bold " +
-              ratingColor
-            }
-          >
-            <span className="m-auto text-shadow dark:text-shadow-white">
-              {parseFloat(vote_average?.toFixed(2))}
-            </span>
+        <img loading="lazy" className="rounded-l object-cover" src={getImg()} />
+        {vote_average && (
+          <div className="relative w-0 right-9 top-1 ">
+            <div
+              className={
+                "min-w-8 w-8 h-8 flex rounded-2xl bg-gray-400 dark:bg-gray-600 font-bold " +
+                ratingColor
+              }
+            >
+              <span className="m-auto text-shadow dark:text-shadow-white">
+                {parseFloat(vote_average?.toFixed(2))}
+              </span>
+            </div>
           </div>
-        </div>
+        )}
         <div className="w-full ps-2 h-full pt-3 overflow-hidden">
           <div className="movie-card-title text-base w-full font-semibold my-auto text-nowrap overflow-hidden text-ellipsis">
             {title}

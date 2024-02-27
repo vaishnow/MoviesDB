@@ -24,7 +24,7 @@ const Profile = () => {
   }, []);
 
   return (
-    <div className="rounded bg-mdb-sec-300">
+    <div className="rounded bg-mdb-sec-300 mb-5">
       <div className="h-52">
         <img src={backdrop} className="w-full h-full object-cover" alt="" />
       </div>

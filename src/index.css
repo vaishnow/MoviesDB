@@ -75,6 +75,10 @@ textarea:focus {
 	display: none;
 }
 
+.scroll-none::-webkit-scrollbar {
+	display: none;
+}
+
 .modal-box {
 	position: absolute;
 	top: 50%;
