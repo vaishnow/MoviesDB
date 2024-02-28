@@ -59,8 +59,7 @@ function Auth({ registered }) {
         JSON.stringify(response.data.userdata)
       );
       sessionStorage.setItem("token", response.data.token);
-      // TODO : navigate to dashboard
-      setTimeout(() => navigate("/"), 2000);
+      setTimeout(() => navigate("/dashboard"), 2000);
     } else {
       toast.error(response.response.data.message || `Login Failed`);
       reset();
