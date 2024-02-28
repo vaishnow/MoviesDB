@@ -84,7 +84,7 @@ function Header() {
         </li>
       </ul>
       <Link
-        className={(navExpanded ? "hidden " : "") + "btn my-auto w-40 overflow-hidden text-ellipsis text-right"}
+        className={(navExpanded ? "hidden " : "") + "py-3 px-1 my-auto max-w-16 md:max-w-56 overflow-hidden text-ellipsis text-right"}
         to={isLoggedIn ? "/dashboard" : "/user/register"}
       >
         {isLoggedIn ? username : " Sign up"}

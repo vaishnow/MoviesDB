@@ -10,7 +10,7 @@ const UserLists = () => {
   const { list: savedList } = useUserList(username, "saved");
 
   return (
-    <div className="grid grid-cols-2 gap-10">
+    <div className="grid lg:grid-cols-2 gap-10">
       <UserList listname="Watch Later" listdata={savedList} />
       <UserList listname="Liked" listdata={likedList} />
     </div>
