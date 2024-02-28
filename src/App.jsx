@@ -3,6 +3,7 @@ import { Outlet, RouterProvider, createBrowserRouter } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import LazyLoadPage from "./pages/LazyLoadPage";
+import UserProvider from "./contexts/UserProvider";
 const Home = lazy(() => import("./pages/Home"));
 const MoviesList = lazy(() => import("./pages/MoviesList"));
 const Movie = lazy(() => import("./pages/Movie"));
@@ -13,11 +14,13 @@ const Dashboard = lazy(() => import("./pages/Dashboard"));
 function Layout() {
   return (
     <>
-      <Header />
-      <Suspense fallback={<LazyLoadPage />}>
-        <Outlet />
-      </Suspense>
-      <Footer />
+      <UserProvider>
+        <Header />
+        <Suspense fallback={<LazyLoadPage />}>
+          <Outlet />
+        </Suspense>
+        <Footer />
+      </UserProvider>
     </>
   );
 }
