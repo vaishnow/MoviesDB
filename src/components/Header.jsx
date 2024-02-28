@@ -2,9 +2,13 @@ import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../assets/logo.svg";
 import "./Header.css";
+import { useUserDetail } from "../contexts/UserProvider";
 
 function Header() {
   const [navExpanded, setNavExpanded] = useState(false);
+  const {
+    userDetails: { username },
+  } = useUserDetail();
   const isLoggedIn = sessionStorage.getItem("token");
   return (
     <nav
@@ -80,10 +84,10 @@ function Header() {
         </li>
       </ul>
       <Link
-        className={(navExpanded ? "hidden " : "") + "btn my-auto bg-"}
+        className={(navExpanded ? "hidden " : "") + "btn my-auto w-40 overflow-hidden text-ellipsis text-right"}
         to={isLoggedIn ? "/dashboard" : "/user/register"}
       >
-        {isLoggedIn ? "Dashboard" : " Sign up"}
+        {isLoggedIn ? username : " Sign up"}
       </Link>
     </nav>
   );

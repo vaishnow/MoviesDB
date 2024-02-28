@@ -1,8 +1,11 @@
+import { useUserDetail } from "../contexts/UserProvider";
 import useUserList from "../hooks/useUserList";
 import UserList from "./UserList";
 
 const UserLists = () => {
-  const { username } = JSON.parse(sessionStorage.getItem("userdata"));
+  const {
+    userDetails: { username },
+  } = useUserDetail();
   const { list: likedList } = useUserList(username, "liked");
   const { list: savedList } = useUserList(username, "saved");
 

@@ -6,7 +6,6 @@ const useUserList = (username, type) => {
 
 	const getList = async () => {
 		const result = await getUserLists(username, type)
-		console.log("result = ",result ); //DEBUG/Exposure
 		if (result.status === 200) {
 			setList(result.data.list)
 		}else{
