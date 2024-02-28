@@ -16,11 +16,13 @@ function DiscoverCard({ movie }) {
   return (
     <div className="discover-card bg-gray-300 dark:bg-mdb-sec-300 h-80 md:h-96 object-cover snap-proximity rounded me-4">
       <Link to={`/${type}/${id}`}>
-        <img
-          loading="lazy"
-          className="w-full rounded-t"
-          src={`https://image.tmdb.org/t/p/w400//${poster_path}`}
-        />
+        {poster_path != "_" && (
+          <img
+            loading="lazy"
+            className="w-full rounded-t"
+            src={`https://image.tmdb.org/t/p/w400/${poster_path}`}
+          />
+        )}
       </Link>
       <div className="w-full px-2 py-0.5 flex items-center h-10 my-auto justify-between">
         <span className="text-sm font-semibold my-auto text-nowrap overflow-hidden text-ellipsis">
