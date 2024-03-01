@@ -8,6 +8,7 @@ const UserList = ({ listname, listdata }) => {
         {listdata.map((item) => (
           <MovieCard
             key={item.tmdbId}
+            content={item.type==1?"movie":"tv"}
             genres={item?.list.genres}
             movie={{
               title: item.list.title,
