@@ -9,7 +9,10 @@ function Header() {
   const {
     userDetails: { username },
   } = useUserDetail();
+  const dashboardUser =
+    username || JSON.parse(sessionStorage.getItem("userdata")).username;
   const isLoggedIn = sessionStorage.getItem("token");
+
   return (
     <nav
       className={
@@ -84,10 +87,13 @@ function Header() {
         </li>
       </ul>
       <Link
-        className={(navExpanded ? "hidden " : "") + "py-3 px-1 my-auto max-w-16 md:max-w-56 overflow-hidden text-ellipsis text-right"}
+        className={
+          (navExpanded ? "hidden " : "") +
+          "py-3 px-1 my-auto max-w-16 md:max-w-56 overflow-hidden text-ellipsis text-right"
+        }
         to={isLoggedIn ? "/dashboard" : "/user/register"}
       >
-        {isLoggedIn ? username : " Sign up"}
+        {isLoggedIn ? dashboardUser : " Sign up"}
       </Link>
     </nav>
   );
