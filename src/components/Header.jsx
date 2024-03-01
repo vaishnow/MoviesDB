@@ -10,7 +10,7 @@ function Header() {
     userDetails: { username },
   } = useUserDetail();
   const dashboardUser =
-    username || JSON.parse(sessionStorage.getItem("userdata")).username;
+    username || JSON.parse(sessionStorage.getItem("userdata"))?.username;
   const isLoggedIn = sessionStorage.getItem("token");
 
   return (
