@@ -3,6 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import useContent from "../hooks/useContent";
 import MovieCard from "../components/MovieCard";
 import Pagination from "../components/Pagination";
+import SearchPanel from "./SearchPanel";
 
 function MoviesList({ content }) {
   const [filterParams, setFilterParams] = useSearchParams({ page: 1 });
@@ -17,12 +18,16 @@ function MoviesList({ content }) {
   }&sort_by=${sort.by}.${sort.order}`;
   let type = content;
 
-  const [contentList, getContentList] = useContent(api);
+  const [contentList, getContentList, setContentEndpoint] = useContent(api);
   const [genreList, getGenreList] = useContent(`/genre/${content}/list`);
 
   const updatePage = (page) => {
     setFilterParams({ page: page });
   };
+
+  const searchContent=(query)=>{
+    setContentEndpoint(`/search/${content}?query=${query}`)
+  }
 
   useEffect(() => {
     if (type != content) {
@@ -40,7 +45,8 @@ function MoviesList({ content }) {
       <div className="text-5xl text-center p-5">
         {content === "movie" ? "Movies" : "TV Shows"}
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-3 p-4">
+      <SearchPanel handleSearch={searchContent}/>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-3 p-4 min-h-96">
         {contentList.results?.map((item) => {
           let gList = genreList.genres?.filter((genre) =>
             item.genre_ids.includes(genre.id)

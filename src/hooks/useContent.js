@@ -23,23 +23,24 @@ const useContent = (urlSuffix) => {
 			}))
 	}
 	const [contentDetails, setContentDetails] = useState(contentPlaceholder);
+	const [endPoint, setEndPoint] = useState(urlSuffix)
 
 	const getContentDetails = async () => {
 		setContentDetails(contentPlaceholder)
-		const result = await discoverContent(urlSuffix);
+		const result = await discoverContent(endPoint.endsWith('?query=')?urlSuffix:endPoint);
 		if (result.status === 200) {
 			setContentDetails(result.data);
 			return result.data
 		} else {
-			console.log(result.response.data);
+			console.error(result.response?.data);
 		}
 	};
 
 	useEffect(() => {
 		getContentDetails();
-	}, []);
+	}, [endPoint,urlSuffix]);
 
-	return [contentDetails, getContentDetails]
+	return [contentDetails, getContentDetails, setEndPoint]
 }
 
 export default useContent
