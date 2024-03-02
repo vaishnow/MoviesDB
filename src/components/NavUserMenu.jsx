@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Avatar, IconButton, Menu, MenuItem, Tooltip } from "@mui/material";
 import { useUserDetail } from "../contexts/UserProvider";
+import ThemeSwitcher from "./ThemeSwitcher";
 
 const NavUserMenu = () => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -34,7 +35,7 @@ const NavUserMenu = () => {
           {isLoggedIn ? (
             <Avatar sx={{ bgcolor: "#444", width: 40, height: 40 }}></Avatar>
           ) : (
-            <button className="btn dark:text-mdb-light">Join </button>
+            <div className="btn dark:text-mdb-light">Join </div>
           )}
         </IconButton>
       </Tooltip>
@@ -62,6 +63,9 @@ const NavUserMenu = () => {
             </>
           )}
         </div>
+        <MenuItem>
+          <ThemeSwitcher />
+        </MenuItem>
         {isLoggedIn && (
           <MenuItem onClick={handleClose} sx={{ px: "10px" }}>
             <button

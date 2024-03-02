@@ -24,7 +24,7 @@ const Profile = () => {
   }, []);
 
   return (
-    <div className="rounded bg-mdb-sec-300 mb-5">
+    <div className="rounded bg-gray-300 dark:bg-mdb-sec-300 mb-5">
       <div className="h-52">
         <img src={backdrop} className="w-full h-full object-cover" alt="" />
       </div>
@@ -36,7 +36,7 @@ const Profile = () => {
       </div>
       <div className="px-5 pt-28 text-center sm:text-left min-h-52">
         <h1 className="text-3xl font-semibold">{userDetails.username}</h1>
-        <p className="text-gray-400">{userDetails.email}</p>
+        <p className="text-gray-500">{userDetails.email}</p>
       </div>
     </div>
   );

@@ -23,7 +23,7 @@ function MovieCard({ content, movie, genres }) {
   const ratingColor = getRatingColor();
 
   return (
-    <div className="movie-card bg-gray-300 dark:bg-mdb-sec-300 w-full max-w-full max-h-48 object-cover snap-proximity rounded m-1">
+    <div className="movie-card bg-mdb-light-100 dark:bg-mdb-sec-300 w-full max-w-full max-h-48 object-cover snap-proximity rounded m-1">
       <Link
         className="flex h-full pe-2"
         to={`/${content == "tv" ? "tvshows" : "movies"}/${id}`}
