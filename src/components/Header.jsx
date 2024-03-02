@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import logo from "../assets/logo.svg";
 import "./Header.css";
 import { useUserDetail } from "../contexts/UserProvider";
+import NavUserMenu from "./NavUserMenu";
 
 function Header() {
   const [navExpanded, setNavExpanded] = useState(false);
@@ -86,15 +87,7 @@ function Header() {
           <NavLink to="/tvshows">TVShows</NavLink>
         </li>
       </ul>
-      <Link
-        className={
-          (navExpanded ? "hidden " : "") +
-          "py-3 px-1 my-auto max-w-16 md:max-w-56 overflow-hidden text-ellipsis text-right"
-        }
-        to={isLoggedIn ? "/dashboard" : "/user/register"}
-      >
-        {isLoggedIn ? dashboardUser : " Sign up"}
-      </Link>
+      {!navExpanded && <NavUserMenu />}
     </nav>
   );
 }
