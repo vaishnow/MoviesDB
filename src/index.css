@@ -9,6 +9,7 @@
 .mui-modal {
 	max-height: 90dvh;
 	overflow-y: auto;
+	background-color: #dbd9d9;
 }
 
 html {

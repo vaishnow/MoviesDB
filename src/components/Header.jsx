@@ -10,9 +10,6 @@ function Header() {
   const {
     userDetails: { username },
   } = useUserDetail();
-  const dashboardUser =
-    username || JSON.parse(sessionStorage.getItem("userdata"))?.username;
-  const isLoggedIn = sessionStorage.getItem("token");
 
   return (
     <nav
@@ -77,9 +74,6 @@ function Header() {
         <li>
           <NavLink to="/">Home</NavLink>
         </li>
-        {/* <li>
-          <NavLink to="/movies">Explore</NavLink>
-        </li> */}
         <li>
           <NavLink to="/movies">Movies</NavLink>
         </li>
