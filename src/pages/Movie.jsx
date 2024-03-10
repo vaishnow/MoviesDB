@@ -1,11 +1,9 @@
 import { useParams } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
 import useContent from "../hooks/useContent";
 import MoviesMain from "../components/MoviesMain";
 import MoviesCrew from "../components/MoviesCrew";
 import Videos from "../components/Videos";
 import "./Movie.css";
-import "react-toastify/dist/ReactToastify.css";
 import ReviewPanel from "../components/ReviewPanel";
 
 function Movie({ content }) {
@@ -23,15 +21,6 @@ function Movie({ content }) {
         <ReviewPanel type={content} tmdbId={id} />
       )}
       <Videos videos={movieDetails.videos?.results} />
-      <ToastContainer
-        position="top-center"
-        autoClose={3000}
-        limit={2}
-        hideProgressBar
-        newestOnTop
-        closeOnClick={false}
-        theme="dark"
-      />
     </div>
   );
 }

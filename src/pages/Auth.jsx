@@ -1,13 +1,11 @@
-import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { toast } from "react-toastify";
 import { FaArrowRight } from "react-icons/fa";
-import logo from "../assets/logo.svg";
 import { userLogin, userRegister } from "../api/moviesDB";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import logo from "../assets/logo.svg";
 
 const generateUserSchema = (isLoginForm) => {
   return z.object({
@@ -155,15 +153,6 @@ function Auth({ registered }) {
           </Link>
         </div>
       </div>
-      <ToastContainer
-        position="top-center"
-        autoClose={3000}
-        limit={2}
-        hideProgressBar
-        newestOnTop
-        closeOnClick={false}
-        theme="dark"
-      />
     </div>
   );
 }

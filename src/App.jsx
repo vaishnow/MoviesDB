@@ -1,10 +1,12 @@
 import React, { Suspense, lazy } from "react";
 import { Outlet, RouterProvider, createBrowserRouter } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import LazyLoadPage from "./pages/LazyLoadPage";
 import ThemeSwitchProvider from "./contexts/ThemeSwitchProvider";
 import UserProvider from "./contexts/UserProvider";
+import "react-toastify/dist/ReactToastify.css";
 const Home = lazy(() => import("./pages/Home"));
 const MoviesList = lazy(() => import("./pages/MoviesList"));
 const Movie = lazy(() => import("./pages/Movie"));
@@ -24,6 +26,15 @@ function Layout() {
           <Footer />
         </ThemeSwitchProvider>
       </UserProvider>
+      <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        limit={2}
+        hideProgressBar
+        newestOnTop
+        closeOnClick={false}
+        theme="dark"
+      />
     </>
   );
 }
