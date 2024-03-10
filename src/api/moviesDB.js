@@ -21,6 +21,10 @@ export const getUserData = async () => {
 	return await axiosAPI('GET', `${MDB_BASE_URL}/user/details`, {}, getJwtHeader())
 }
 
+export const editUserData = async (reqBody, reqHeader) => {
+	return await axiosAPI('POST', `${MDB_BASE_URL}/user/edit`, reqBody, reqHeader ? reqHeader : getJwtHeader())
+}
+
 export const getUserLists = async (username, type) => {
 	return await axiosAPI('GET', `${MDB_BASE_URL}/user/${username}/lists/${type}`, {}, getJwtHeader())
 }

@@ -1,7 +1,9 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { getUserData } from "../api/moviesDB";
 import { useUserDetail } from "../contexts/UserProvider";
+import ProfileEdit from "./ProfileEdit";
 import backdrop from "../assets/logo.svg";
 import "./Profile.css";
 
@@ -14,8 +16,10 @@ const Profile = () => {
     if (result.status === 200) {
       setUserDetails(result.data.userdata);
     } else {
-      alert(`An error occured, please try again later`);
-      navigate("/user/register");
+      toast.error(`Something went wrong`);
+      setTimeout(() => {
+        navigate("/user/login");
+      }, 2000);
     }
   };
 
@@ -34,7 +38,8 @@ const Profile = () => {
           className="mx-auto sm:ml-4 border-2 profile-img"
         ></img>
       </div>
-      <div className="px-5 pt-28 text-center sm:text-left min-h-52">
+      <div className="px-5 text-center sm:text-left min-h-52">
+        <ProfileEdit/>
         <h1 className="text-3xl font-semibold">{userDetails.username}</h1>
         <p className="text-gray-500">{userDetails.email}</p>
       </div>
