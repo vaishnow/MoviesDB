@@ -51,7 +51,7 @@ const userSchema = z.object({
 const ProfileEdit = () => {
   const [open, setOpen] = useState(false);
   const [updateImgPreview, setUpdateImgPreview] = useState(null);
-  const { userDetails } = useUserDetail();
+  const { userDetails, setUserDetails } = useUserDetail();
   const {
     register,
     reset,
@@ -65,7 +65,7 @@ const ProfileEdit = () => {
 
   const handleReset = () => {
     reset();
-    setUpdateImgPreview(null);
+    setUpdateImgPreview(userDetails?.userimgurl);
   };
 
   const handleImgChange = (e) => {
@@ -84,10 +84,10 @@ const ProfileEdit = () => {
     const result = await editUserData(data, reqHeader);
     if (result.status === 200) {
       toast.success("Profile Updated");
+      setUserDetails(result.data?.userdata);
       reset();
       handleClose();
     } else {
-      console.log("PUKE: result = " , result) //DEBUG/Exposure
       toast(result.response.data?.error);
     }
   };
@@ -114,7 +114,11 @@ const ProfileEdit = () => {
                 className="text-lg font-semibold  my-2"
               >
                 <Avatar
-                  src={updateImgPreview}
+                  src={
+                    updateImgPreview
+                      ? updateImgPreview
+                      : userDetails?.userimgurl
+                  }
                   sx={{
                     width: 240,
                     height: 240,

@@ -2,14 +2,10 @@ import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../assets/logo.svg";
 import "./Header.css";
-import { useUserDetail } from "../contexts/UserProvider";
 import NavUserMenu from "./NavUserMenu";
 
 function Header() {
   const [navExpanded, setNavExpanded] = useState(false);
-  const {
-    userDetails: { username },
-  } = useUserDetail();
 
   return (
     <nav

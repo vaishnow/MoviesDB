@@ -14,7 +14,7 @@ const Profile = () => {
   const getUserDetails = async () => {
     const result = await getUserData();
     if (result.status === 200) {
-      setUserDetails(result.data.userdata);
+      setUserDetails(result.data?.userdata);
     } else {
       toast.error(`Something went wrong`);
       setTimeout(() => {
@@ -34,12 +34,12 @@ const Profile = () => {
       </div>
       <div className="h-0">
         <img
-          src="/icons/favicon.svg"
-          className="mx-auto sm:ml-4 border-2 profile-img"
+          src={userDetails?.userimgurl}
+          className="mx-auto sm:ml-4 border-2 bg-slate-200 profile-img"
         ></img>
       </div>
       <div className="px-5 text-center sm:text-left min-h-52">
-        <ProfileEdit/>
+        <ProfileEdit />
         <h1 className="text-3xl font-semibold">{userDetails.username}</h1>
         <p className="text-gray-500">{userDetails.email}</p>
       </div>

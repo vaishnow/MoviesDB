@@ -7,10 +7,14 @@ import ThemeSwitcher from "./ThemeSwitcher";
 const NavUserMenu = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const navigate = useNavigate();
-  const { setUserDetails } = useUserDetail();
+  const { userDetails, setUserDetails } = useUserDetail();
 
   const open = Boolean(anchorEl);
   const isLoggedIn = sessionStorage.getItem("token");
+  const userimgurl =
+    isLoggedIn &&
+    (userDetails?.userimgurl ||
+      JSON.parse(sessionStorage.getItem("userdata")).userimgurl);
 
   const handleClick = (e) => setAnchorEl(e.currentTarget);
   const handleClose = () => setAnchorEl(null);
@@ -33,7 +37,10 @@ const NavUserMenu = () => {
           aria-expanded={open ? "true" : undefined}
         >
           {isLoggedIn ? (
-            <Avatar sx={{ bgcolor: "#444", width: 40, height: 40 }}></Avatar>
+            <Avatar
+              src={userimgurl}
+              sx={{ bgcolor: "#444", width: 40, height: 40, bgcolor: "#ddd" }}
+            ></Avatar>
           ) : (
             <div className="btn dark:text-mdb-light">Join </div>
           )}
