@@ -1,9 +1,12 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import spinner from "../assets/spinner.gif";
+import { Skeleton } from "@mui/material";
 import broken from "../assets/broken.png";
 import "./MovieCard.css";
 
 function MovieCard({ content, movie, genres }) {
+  const [isLoading, setIsLoading] = useState(true);
+
   const { id, poster_path, vote_average } = movie;
   const title = movie.name || movie.title;
   const year = (movie.release_date || movie.first_air_date)?.slice(0, 4);
@@ -14,12 +17,6 @@ function MovieCard({ content, movie, genres }) {
     return "text-green-400";
   };
 
-  const getImg = () => {
-    if (poster_path === "_") return spinner;
-    if (poster_path) return `https://image.tmdb.org/t/p/w200${poster_path}`;
-    return broken;
-  };
-
   const ratingColor = getRatingColor();
 
   return (
@@ -28,7 +25,25 @@ function MovieCard({ content, movie, genres }) {
         className="flex h-full pe-2"
         to={`/${content == "tv" ? "tvshows" : "movies"}/${id}`}
       >
-        <img loading="lazy" className="rounded-l object-cover" src={getImg()} />
+        {isLoading && (
+          <Skeleton
+            variant="rectangular"
+            sx={{ aspectRatio: "11/16" }}
+            height="100%"
+          />
+        )}
+
+        <img
+          onLoad={() => setIsLoading(false)}
+          loading="lazy"
+          className={(isLoading && "w-0 h-0") + " rounded-l object-cover"}
+          src={
+            !poster_path && !isLoading
+              ? broken
+              : `https://image.tmdb.org/t/p/w200${poster_path}`
+          }
+        />
+
         {vote_average && (
           <div className="relative w-0 right-9 top-1 ">
             <div

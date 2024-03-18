@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import { Skeleton } from "@mui/material";
 import { toast } from "react-toastify";
 import {
   FaRegCirclePlay,
@@ -14,6 +15,7 @@ import "./MoviesMain.css";
 const MoviesMain = ({ movieDetails, type }) => {
   const [isLiked, setIsLiked] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const {
     id,
@@ -74,13 +76,25 @@ const MoviesMain = ({ movieDetails, type }) => {
       className="mbg bg-no-repeat bg-cover bg-center rounded-lg w-full"
     >
       <div className="mfg md:flex p-3 md:p-5 w-full max-w-full h-full rounded-lg shadow text-white">
-        <div className="min-w-fit max-w-md mx-auto">
+        <div className="min-w-96 max-w-md mx-auto">
+          {isLoading && (
+            <Skeleton
+              variant="rounded"
+              animation="wave"
+              height="90%"
+              sx={{
+                bgcolor: "grey.700",
+                maxWidth: "100%",
+                height: "90%",
+                aspectRatio: "11/16",
+              }}
+            />
+          )}
           <img
-            src={
-              poster_path && `https://image.tmdb.org/t/p/w500/${poster_path}`
-            }
+            src={poster_path && `https://image.tmdb.org/t/p/w500${poster_path}`}
+            onLoad={() => setIsLoading(false)}
             alt=""
-            className="rounded w-full md:w-80"
+            className={isLoading && "h-0" + " rounded w-full md:w-80"}
           />
           <div className="mt-4 flex justify-around text-2xl">
             <button onClick={handleLike}>
