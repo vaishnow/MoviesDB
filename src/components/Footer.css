@@ -5,19 +5,22 @@ footer {
 .fluid {
 	aspect-ratio: 1/1;
 	border-radius: 50%;
-	transition: 0s;
+	transition: ease-in-out 1s;
+	overflow: hidden;
+	box-shadow: 1px 1px 5px .1px #8100df;
 }
 
-.fluid svg{
+.fluid svg {
+	transition: 1s;
 	margin: auto;
 }
 
+.fluid svg:hover {
+	scale: 1.2;
+}
+
 .fluid:hover {
-	background-image: url('../assets/fluid.gif');
-	background-size: 130%;
-	background-position: center;
-	background-repeat: no-repeat;
-	border-radius: 50%;
-	aspect-ratio: 1/1;
-	height: 3rem;
+	scale: 1.1;
+	background: radial-gradient(circle, rgba(255, 1, 230, 1) 35%, rgba(129, 0, 223, 1) 52%);
+	box-shadow: 0 0 1px 3px #8100df;
 }

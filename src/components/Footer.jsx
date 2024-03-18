@@ -44,14 +44,6 @@ function Footer() {
       path: "tvshows",
       desc: "TV Shows",
     },
-    {
-      path: "",
-      desc: "Popular",
-    },
-    {
-      path: "",
-      desc: "Top Rated",
-    },
   ];
   const footerSocialMedia = [
     {
