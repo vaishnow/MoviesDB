@@ -39,7 +39,7 @@ const NavUserMenu = () => {
           {isLoggedIn ? (
             <Avatar
               src={userimgurl}
-              sx={{ bgcolor: "#444", width: 40, height: 40, bgcolor: "#ddd" }}
+              sx={{ width: 40, height: 40, bgcolor: "#ddd" }}
             ></Avatar>
           ) : (
             <div className="btn dark:text-mdb-light">Join </div>

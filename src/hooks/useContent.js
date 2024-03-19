@@ -10,7 +10,6 @@ const useContent = (urlSuffix) => {
 				"original_title": "...",
 				"overview": "...",
 				"popularity": 0,
-				"poster_path": "_",
 				"release_date": "...",
 				"title": "...",
 				"vote_average": 0,

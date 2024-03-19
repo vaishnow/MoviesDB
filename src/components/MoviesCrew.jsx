@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import CrewCard from "./CrewCard";
 
 const MoviesCrew = ({ crew, title }) => {
