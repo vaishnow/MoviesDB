@@ -4,8 +4,6 @@
 }
 
 .crew-card img {
-  width: 100%;
-  height: 100%;
   object-position: center;
   border-radius: .4rem;
   object-fit: cover;
