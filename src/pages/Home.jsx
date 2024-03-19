@@ -25,9 +25,9 @@ function Home() {
     <div className="mdb-page">
       <section
         id="top"
-        className="items-stretch grid grid-cols-1 xl:grid-cols-2 select-none"
+        className="items-stretch grid grid-cols-1 lg:grid-cols-2 select-none"
       >
-        <div className="intro-div  p-5 md:p-16 flex flex-col justify-center">
+        <div className="p-5 md:p-16 flex flex-col justify-center">
           <h5 className="text-h5  py-2">DISCOVER YOUR FAVOURITE</h5>
           <h4 className="text-h4 leading-tight">MOVIES AND MORE</h4>
           <p>
@@ -41,7 +41,7 @@ function Home() {
             Explore →
           </Link>
         </div>
-        <div className=" intro-div min-h-96 py-10  max-h-screen">
+        <div className="intro-div min-h-96 py-10 max-h-screen">
           <div className="imc-container grid grid-cols-3 mx-10 lg:mx-10">
             <Link
               className="intro-movie-card overflow-hidden -rotate-12 hover:-rotate-12"

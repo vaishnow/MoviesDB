@@ -1,18 +1,18 @@
 import { Suspense, lazy } from "react";
 import { Outlet, RouterProvider, createBrowserRouter } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
 import LazyLoadPage from "./pages/LazyLoadPage";
 import ThemeSwitchProvider from "./contexts/ThemeSwitchProvider";
 import UserProvider from "./contexts/UserProvider";
 import "react-toastify/dist/ReactToastify.css";
 const Home = lazy(() => import("./pages/Home"));
+const Header = lazy(() => import("./components/Header"));
 const MoviesList = lazy(() => import("./pages/MoviesList"));
 const Movie = lazy(() => import("./pages/Movie"));
 const Auth = lazy(() => import("./pages/Auth"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const Dashboard = lazy(() => import("./pages/Dashboard"));
+const Footer = lazy(() => import("./components/Footer"));
 
 function Layout() {
   return (

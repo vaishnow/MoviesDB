@@ -1,3 +1,7 @@
+.intro-div {
+	min-height: 100dvh;
+}
+
 #top .text-h5 {
 	font-size: clamp(2rem, 3rem, 3vw);
 }
@@ -12,14 +16,14 @@
 
 .intro-movie-card {
 	display: block;
-	border-radius: 1rem;
+	border-radius: .5rem;
 	aspect-ratio: 10/16;
 	width: 20rem;
 	min-width: 40vw;
 	max-width: 60vw;
 	margin-left: 10vw;
 	position: relative;
-	transition: ease .4s;
+	transition: ease .1s;
 	box-shadow: 0 0 2px gray;
 }
 
@@ -31,6 +35,8 @@
 .imc-container {
 	margin-left: 7vw;
 	max-width: 10vw;
+	min-height: 100dvh;
+	padding-top: 10rem;
 }
 
 @media (min-width:640px) {
@@ -43,11 +49,12 @@
 		margin-left: 0;
 		width: 50%;
 		max-width: 45vw;
+		padding-top: 0;
 	}
 
 }
 
-@media (min-width:1280px) {
+@media (min-width:1024px) {
 	.intro-movie-card {
 		min-width: 20vw;
 		width: 30rem;
@@ -56,6 +63,7 @@
 	}
 
 	.imc-container {
+		padding-top: 3rem;
 		max-width: 25vw;
 	}
 

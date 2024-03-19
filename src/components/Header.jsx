@@ -58,7 +58,7 @@ function Header() {
       </div>
       <div className={(navExpanded ? "hidden " : "") + "mx-3 my-auto"}>
         <Link to="/">
-          <img className="h-10" src={logo} />
+          <img className="h-10 w-32" src={logo} />
         </Link>
       </div>
       <ul
