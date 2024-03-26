@@ -7,7 +7,7 @@ footer {
 	border-radius: 50%;
 	transition: ease-in-out 1s;
 	overflow: hidden;
-	box-shadow: 1px 1px 5px .1px #8100df;
+	box-shadow: 2px 2px 3px 1px #8100df;
 }
 
 .fluid svg {
@@ -15,12 +15,7 @@ footer {
 	margin: auto;
 }
 
-.fluid svg:hover {
-	scale: 1.2;
-}
-
 .fluid:hover {
-	scale: 1.1;
-	background: radial-gradient(circle, rgba(255, 1, 230, 1) 35%, rgba(129, 0, 223, 1) 52%);
-	box-shadow: 0 0 1px 3px #8100df;
+	scale: 1.2;
+	box-shadow: 0 0 1px .1px #8100df, 6px 6px 1px -1px #8100df;
 }

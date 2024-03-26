@@ -5,7 +5,7 @@ import "./DiscoverCard.css";
 
 function DiscoverCard({ movie }) {
   const [isLoading, setIsLoading] = useState(true);
-  
+
   const { id, poster_path, vote_average } = movie;
   const title = movie.first_air_date ? movie.name : movie.title;
   const type = movie.first_air_date ? "tvshows" : "movies";
@@ -30,7 +30,7 @@ function DiscoverCard({ movie }) {
         {poster_path && (
           <img
             loading="lazy"
-            className={isLoading && "h-0 " + "w-full rounded-t"}
+            className={(isLoading && "h-0 ") + "w-full rounded-t"}
             onLoad={() => setIsLoading(false)}
             src={`https://image.tmdb.org/t/p/w400${poster_path}`}
           />
