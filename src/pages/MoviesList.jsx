@@ -72,7 +72,7 @@ function MoviesList({ content }) {
       </div>
       <Pagination
         currPage={parseInt(filterParams.get("page")) || 1}
-        totalPages={500}
+        totalPages={contentList?.total_pages}
         pageUpdate={updatePage}
       />
     </section>

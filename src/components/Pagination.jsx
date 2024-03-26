@@ -47,7 +47,7 @@ const Pagination = ({ currPage, pageUpdate, totalPages }) => {
             </button>
           )}
           {/* Dots */}
-          {currPage < 498 && <span className="btn">...</span>}
+          {currPage < lastPage - 2 && <span className="btn">...</span>}
           {/* Last Page Button */}
           {currPage < lastPage && (
             <button
@@ -58,7 +58,7 @@ const Pagination = ({ currPage, pageUpdate, totalPages }) => {
             </button>
           )}
           {/* Next Page Button */}
-          {currPage < 500 && (
+          {currPage < lastPage && (
             <button
               className="btn m-1 bg-mdb-light-100 dark:bg-mdb-sec-300"
               onClick={() => pageUpdate(currPage + 1)}
