@@ -13,21 +13,27 @@ function MoviesList({ content }) {
     movie: `/discover/movie?include_adult=false&include_video=false&language=en-US&`,
     tvshow: `/discover/tv?include_null_first_air_dates=false&include_adult=false&language=en-US&`,
   };
-  const api = `${content == "movie" ? apiPrefix.movie : apiPrefix.tvshow}page=${
-    filterParams.get("page") || 1
-  }&sort_by=${sort.by}.${sort.order}`;
+  const api = () =>
+    `${content == "movie" ? apiPrefix.movie : apiPrefix.tvshow}page=${
+      filterParams.get("page") || 1
+    }&sort_by=${sort.by}.${sort.order}`;
   let type = content;
 
-  const [contentList, getContentList, setContentEndpoint] = useContent(api);
+  const [contentList, getContentList, setContentEndpoint] = useContent(api());
   const [genreList, getGenreList] = useContent(`/genre/${content}/list`);
 
   const updatePage = (page) => {
-    setFilterParams({ page: page });
+    filterParams.set("page", page);
+    setFilterParams(filterParams);
   };
 
-  const searchContent=(query)=>{
-    setContentEndpoint(`/search/${content}?query=${query}`)
-  }
+  const searchContent = (query, page) => {
+    query?.length > 0
+      ? setContentEndpoint(
+          `/search/${content}?query=${query}&page=${page || 1}`
+        )
+      : setContentEndpoint();
+  };
 
   useEffect(() => {
     if (type != content) {
@@ -35,8 +41,11 @@ function MoviesList({ content }) {
       getContentList();
       setFilterParams({ page: 1 });
       type = content;
+    } else if (filterParams.get("q")?.length > 0) {
+      searchContent(filterParams.get("q"), filterParams.get("page"));
     } else {
-      getContentList();
+      setContentEndpoint(api());
+      console.log("PUKE: filterParams = ", filterParams); //DEBUG/Exposure
     }
   }, [content, filterParams]);
 
@@ -45,7 +54,7 @@ function MoviesList({ content }) {
       <div className="text-5xl text-center p-5">
         {content === "movie" ? "Movies" : "TV Shows"}
       </div>
-      <SearchPanel handleSearch={searchContent}/>
+      <SearchPanel handleSearch={(q) => setFilterParams({ q })} />
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-3 p-4 min-h-96">
         {contentList.results?.map((item) => {
           let gList = genreList.genres?.filter((genre) =>

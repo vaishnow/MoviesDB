@@ -26,7 +26,7 @@ const useContent = (urlSuffix) => {
 
 	const getContentDetails = async () => {
 		setContentDetails(contentPlaceholder)
-		const result = await discoverContent(endPoint.endsWith('?query=')?urlSuffix:endPoint);
+		const result = await discoverContent(endPoint?endPoint:urlSuffix);
 		if (result.status === 200) {
 			setContentDetails(result.data);
 			return result.data
@@ -37,7 +37,7 @@ const useContent = (urlSuffix) => {
 
 	useEffect(() => {
 		getContentDetails();
-	}, [endPoint,urlSuffix]);
+	}, [endPoint,urlSuffix]);	
 
 	return [contentDetails, getContentDetails, setEndPoint]
 }
