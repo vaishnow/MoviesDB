@@ -35,7 +35,7 @@ const Profile = () => {
       <div className="h-0">
         <img
           src={userDetails?.userimgurl}
-          className="mx-auto sm:ml-4 border-2 bg-slate-200 profile-img"
+          className="mx-auto sm:ml-4 border-2 object-cover bg-slate-200 profile-img"
         ></img>
       </div>
       <div className="px-5 text-center sm:text-left min-h-52">
