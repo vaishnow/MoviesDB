@@ -50,3 +50,7 @@ export const getReviews = async (type, tmdbId) => {
 export const setReviews = async (type, tmdbId, reqBody) => {
 	return await axiosAPI('POST', `${MDB_BASE_URL}/mdb/${type}/${tmdbId}/review/add`, reqBody, getJwtHeader())
 }
+
+export const delReview = async (type, tmdbId) => {
+	return await axiosAPI('DELETE', `${MDB_BASE_URL}/mdb/${type}/${tmdbId}/review/del`,{}, getJwtHeader())
+}

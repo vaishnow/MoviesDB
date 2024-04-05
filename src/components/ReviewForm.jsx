@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Box, Modal } from "@mui/material";
-import { setReviews } from "../api/moviesDB";
+import { delReview, setReviews } from "../api/moviesDB";
 import { toast } from "react-toastify";
 
 const ratingValidation = z.coerce
@@ -73,16 +73,32 @@ const ReviewForm = ({ type, tmdbId, updateFunc, isReviewed, review }) => {
     }
   };
 
+  const deleteReview = async (reqBody) => {
+    const result = await delReview(type, tmdbId, reqBody);
+    if (result.status === 200) {
+      toast.success("Review Removed");
+      handleClose();
+      updateFunc();
+    } else {
+      toast.error("Something went wrong");
+    }
+  };
+
   const loginAlert = () => toast.warn("Login to continue");
 
   return (
     <>
-      <button
-        className="btn bg-mdb-red"
-        onClick={sessionStorage.getItem("token") ? handleOpen : loginAlert}
-      >
-        {isReviewed ? "EDIT" : "ADD"} REVIEW
-      </button>
+      <div className="flex">
+        <button
+          className="btn bg-mdb-red"
+          onClick={sessionStorage.getItem("token") ? handleOpen : loginAlert}
+        >
+          {isReviewed ? "EDIT" : "ADD"} REVIEW
+        </button>
+        <button className="btn ms-5 bg-slate-600" onClick={deleteReview}>
+          DELETE REVIEW
+        </button>
+      </div>
       <Modal
         open={open}
         onClose={handleClose}
