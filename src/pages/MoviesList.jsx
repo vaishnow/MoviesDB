@@ -13,6 +13,7 @@ function MoviesList({ content }) {
     movie: `/discover/movie?include_adult=false&include_video=false&language=en-US&`,
     tvshow: `/discover/tv?include_null_first_air_dates=false&include_adult=false&language=en-US&`,
   };
+
   const api = () =>
     `${content == "movie" ? apiPrefix.movie : apiPrefix.tvshow}page=${
       filterParams.get("page") || 1
@@ -45,7 +46,6 @@ function MoviesList({ content }) {
       searchContent(filterParams.get("q"), filterParams.get("page"));
     } else {
       setContentEndpoint(api());
-      console.log("PUKE: filterParams = ", filterParams); //DEBUG/Exposure
     }
   }, [content, filterParams]);
 

@@ -8,6 +8,5 @@ const reqHeader = {
 };
 
 export const discoverContent = async (api) => {
-	console.log(`${TMDB_BASE_URL}${api}`);
 	return await axiosAPI('GET', `${TMDB_BASE_URL}${api}`, '', reqHeader)
 }

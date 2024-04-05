@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getUserLists } from "../api/moviesDB";
+import { toast } from "react-toastify";
 
 const useUserList = (username, type) => {
 	const [list, setList] = useState([])
@@ -9,7 +10,7 @@ const useUserList = (username, type) => {
 		if (result.status === 200) {
 			setList(result.data.list)
 		}else{
-			console.log(result.response.data)
+			toast.error(result.response.data)
 		}
 	}
 	
