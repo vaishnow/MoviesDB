@@ -6,7 +6,7 @@ const CrewCard = ({ member }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   return (
-    <div className="crew-card m-2">
+    <div className="crew-card m-2 overflow-hidden">
       {isLoading && (
         <Avatar variant="rounded" sx={{ width: "100%", height: "100%" }} />
       )}
@@ -19,8 +19,8 @@ const CrewCard = ({ member }) => {
           className={isLoading ? "w-0 h-0" : "w-full h-full"}
         />
       )}
-      <div className="h-20 pt-6 -translate-y-full rounded-b text-center text-nowrap text-ellipsis overflow-hidden bw-gradient">
-        <span className="block">{member.name}</span>
+      <div className="h-28 py-6 -translate-y-20 rounded-b text-center text-nowrap text-ellipsis overflow-hidden bw-gradient">
+        <span className="block font-semibold">{member.name}</span>
         <span className="text-sm text-gray-400">
           {member.character || member.department}
         </span>
