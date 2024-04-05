@@ -1,0 +1,56 @@
+.spinner {
+  position: relative;
+  width: 28.8px;
+  height: 28.8px;
+  margin: auto;
+}
+
+.spinner::before {
+  border: 7.2px solid #b001e3;
+  box-shadow: 0 -43.2px 0 -7.2px #ff01e6, -3px -3px 0 -3px #ff01e6;
+}
+
+.spinner::after {
+  box-shadow: 0 -43.2px 0 -7.2px #7300de, -3px -3px 0 -3px #7300de;
+}
+
+.spinner::before,
+.spinner::after {
+  content: '';
+  width: 100%;
+  height: 100%;
+  display: block;
+  animation: spinner-1 0.5s backwards, spinner-2 1.3s 0.5s infinite alternate;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.spinner::after {
+  animation-delay: 0s, 1.25s;
+}
+
+.glow {
+  animation: glow 3s infinite;
+}
+
+@keyframes glow {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes spinner-1 {
+  from {
+    box-shadow: 0 0 0 -7.2px #ff01e6;
+  }
+}
+
+@keyframes spinner-2 {
+  to {
+    transform: rotate(360deg);
+  }
+}
